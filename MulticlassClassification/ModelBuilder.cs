@@ -4,23 +4,19 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Microsoft.ML.Transforms;
+using MulticlassClassification.DataStructures;
 
 namespace MulticlassClassification
 {
     public class ModelBuilder
     {
-        private static string TrainDataPath = GetAbsolutePath("./Data/TrainData.txt");
-        private static string TestDataPath = GetAbsolutePath("./Data/TestData.txt");
         public ModelBuilder()
         {
         }
 
-        public EstimatorChain<ColumnConcatenatingTransformer> DataSetup(MLContext context)
+        public EstimatorChain<TransformerChain<KeyToValueMappingTransformer>> TrainingModelSetup(MLContext context)
         {
-            // loads the data
-            var trainingDataView = context.Data.LoadFromTextFile<IrisData>(TrainDataPath, hasHeader: true);
-            var testDataView = context.Data.LoadFromTextFile<IrisData>(TestDataPath, hasHeader: true);
-
             var outputDataSetup = context
                 .Transforms
                 .Conversion
@@ -32,8 +28,30 @@ namespace MulticlassClassification
                     nameof(IrisData.PetalLength),
                     nameof(IrisData.PetalWidth)
                     );
-            var dataSetup = outputDataSetup.Append(inputDataSetup).AppendCacheCheckpoint(context);
-            return dataSetup;
+            var dataPipeline = outputDataSetup.Append(inputDataSetup).AppendCacheCheckpoint(context);
+            
+            var trainer = Trainer(context);
+            var trainingPipeline = dataPipeline.Append(trainer);
+            return trainingPipeline;
+
+        }
+
+        public EstimatorChain<KeyToValueMappingTransformer> Trainer(MLContext context)
+        {
+            var trainer = context
+                .MulticlassClassification
+                .Trainers
+                .SdcaMaximumEntropy(
+                    labelColumnName: "KeyColumn", 
+                    featureColumnName: "Features")
+                .Append(
+                    context
+                        .Transforms
+                        .Conversion
+                        .MapKeyToValue(
+                            outputColumnName: nameof(IrisData.Label), 
+                            inputColumnName: "KeyColumn"));
+            return trainer;
         }
 
         public void TrainModel(MLContext context)

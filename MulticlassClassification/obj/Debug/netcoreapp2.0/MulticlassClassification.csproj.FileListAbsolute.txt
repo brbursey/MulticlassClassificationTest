@@ -1,0 +1,14 @@
+C:\projects.net\MulticlassClassificationTest\MulticlassClassification\bin\Debug\netcoreapp2.0\MulticlassClassification.deps.json
+C:\projects.net\MulticlassClassificationTest\MulticlassClassification\bin\Debug\netcoreapp2.0\MulticlassClassification.runtimeconfig.json
+C:\projects.net\MulticlassClassificationTest\MulticlassClassification\bin\Debug\netcoreapp2.0\MulticlassClassification.runtimeconfig.dev.json
+C:\projects.net\MulticlassClassificationTest\MulticlassClassification\bin\Debug\netcoreapp2.0\MulticlassClassification.dll
+C:\projects.net\MulticlassClassificationTest\MulticlassClassification\bin\Debug\netcoreapp2.0\MulticlassClassification.pdb
+C:\projects.net\MulticlassClassificationTest\MulticlassClassification\obj\Debug\netcoreapp2.0\MulticlassClassification.csprojAssemblyReference.cache
+C:\projects.net\MulticlassClassificationTest\MulticlassClassification\obj\Debug\netcoreapp2.0\MulticlassClassification.csproj.CoreCompileInputs.cache
+C:\projects.net\MulticlassClassificationTest\MulticlassClassification\obj\Debug\netcoreapp2.0\MulticlassClassification.AssemblyInfoInputs.cache
+C:\projects.net\MulticlassClassificationTest\MulticlassClassification\obj\Debug\netcoreapp2.0\MulticlassClassification.AssemblyInfo.cs
+C:\projects.net\MulticlassClassificationTest\MulticlassClassification\obj\Debug\netcoreapp2.0\MulticlassClassification.dll
+C:\projects.net\MulticlassClassificationTest\MulticlassClassification\obj\Debug\netcoreapp2.0\MulticlassClassification.pdb
+C:\projects.net\MulticlassClassificationTest\MulticlassClassification\bin\Debug\netcoreapp2.0\Data\TestData.txt
+C:\projects.net\MulticlassClassificationTest\MulticlassClassification\bin\Debug\netcoreapp2.0\Data\TrainData.txt
+C:\projects.net\MulticlassClassificationTest\MulticlassClassification\bin\Debug\netcoreapp2.0\MLModels\TestClassificationModel.zip
