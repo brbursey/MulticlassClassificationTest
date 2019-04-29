@@ -1,0 +1,64 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Dev\\MLMulticlassClassification\\MulticlassClassificationTest\\MulticlassClassification\\MulticlassClassification.csproj": {}
+  },
+  "projects": {
+    "C:\\Dev\\MLMulticlassClassification\\MulticlassClassificationTest\\MulticlassClassification\\MulticlassClassification.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Dev\\MLMulticlassClassification\\MulticlassClassificationTest\\MulticlassClassification\\MulticlassClassification.csproj",
+        "projectName": "MulticlassClassification",
+        "projectPath": "C:\\Dev\\MLMulticlassClassification\\MulticlassClassificationTest\\MulticlassClassification\\MulticlassClassification.csproj",
+        "packagesPath": "C:\\Users\\Blaine's Laptop\\.nuget\\packages\\",
+        "outputPath": "C:\\Dev\\MLMulticlassClassification\\MulticlassClassificationTest\\MulticlassClassification\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Blaine's Laptop\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Microsoft.ML": {
+              "target": "Package",
+              "version": "[0.11.0, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
