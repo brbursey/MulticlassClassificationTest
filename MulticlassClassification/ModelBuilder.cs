@@ -30,13 +30,12 @@ namespace MulticlassClassification
                     );
             var dataPipeline = outputDataSetup.Append(inputDataSetup).AppendCacheCheckpoint(context);
             
-            var trainer = Trainer(context);
+            var trainer = CreateTrainerForModel(context);
             var trainingPipeline = dataPipeline.Append(trainer);
             return trainingPipeline;
-
         }
 
-        public EstimatorChain<KeyToValueMappingTransformer> Trainer(MLContext context)
+        public EstimatorChain<KeyToValueMappingTransformer> CreateTrainerForModel(MLContext context)
         {
             var trainer = context
                 .MulticlassClassification
@@ -56,8 +55,10 @@ namespace MulticlassClassification
 
         public void TrainModel(MLContext context)
         {
-            var trainer = context.MulticlassClassification.Trainers.SdcaMaximumEntropy(labelColumnName: "KeyColumn",
-                                                                                       featureColumnName: "Features");
+            var trainer = context
+                .MulticlassClassification
+                .Trainers
+                .SdcaMaximumEntropy(labelColumnName: "KeyColumn", featureColumnName: "Features");
         }
 
         public static string GetAbsolutePath(string relativePath)
