@@ -7,6 +7,8 @@ namespace MulticlassClassification.DataStructures
 {
      public class IrisData
         {
+            public Dictionary<string, float> Probabilities { get; set; } 
+
             [LoadColumn(0)]
             public float Label;
     
