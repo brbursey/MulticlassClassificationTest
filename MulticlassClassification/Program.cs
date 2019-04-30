@@ -26,15 +26,17 @@ namespace MulticlassClassification
             var trainingDataView = context.Data.LoadFromTextFile<IrisData>(TrainDataPath, hasHeader: true);
             var testDataView = context.Data.LoadFromTextFile<IrisData>(TestDataPath, hasHeader: true);
 
-            CreateDirectoryAndExtractZipfile(BaseModelPath, ModelZipFilePath);
-
             var model = new ModelBuilder();
             var trainer = model.CreateTrainerForModel(context);
             var pipeline = model.TrainingModelSetup(context);
+
+            CreateDirectoryAndExtractZipfile(BaseModelPath, ModelZipFilePath);
             FitAndSaveModel(context, trainingDataView, trainer, pipeline);
 
             var trainedMulticlassModel = context.Model.Load(ModelPath, out var modelInputSchema);
             PredictTestValues(context, trainedMulticlassModel);
+            //var dataPredictions = PredictValues(context, trainedMulticlassModel, irisData);
+            //TODO: Create method that takes inputs and creates objects for each line
         }
 
         private static void FitAndSaveModel(MLContext context, 
@@ -68,14 +70,14 @@ namespace MulticlassClassification
                 "Virginica",
                 "Versicolor"
             };
+            var IrisFlowers = OutputCategories(categories);
+
             var predEngine = context.Model.CreatePredictionEngine<IrisData, IrisPrediction>(trainedMulticlassModel);
             VBuffer<float> keys = default;
             predEngine.OutputSchema["PredictedLabel"].GetKeyValues(ref keys);
             var labelsArray = keys.DenseValues().ToArray();
-
-            var IrisFlowers = OutputCategories(categories);
-
             Console.WriteLine("=====Predicting using model====");
+
             var resultPrediction1 = predEngine.Predict(SampleIrisData.Iris1);
 
             Console.WriteLine($"Actual: Setosa.\n" +
@@ -88,7 +90,7 @@ namespace MulticlassClassification
 
             Console.WriteLine($"Actual: Virginica.\n" +
                               $"Predicted label and score:\n" +
-                              $"{IrisFlowers[labelsArray[0]]}: {resultPrediction2.Score[0]:0####}\n" +
+                              $"{IrisFlowers[labelsArray[0]]}: {resultPrediction2.Score[0]:0.####}\n" +
                               $"{IrisFlowers[labelsArray[1]]}: {resultPrediction2.Score[1]:0.####}\n" +
                               $"{IrisFlowers[labelsArray[2]]}: {resultPrediction2.Score[2]:0.####}\n");
 
@@ -96,9 +98,39 @@ namespace MulticlassClassification
 
             Console.WriteLine($"Actual: Versicolor.\n" +
                               $"Predicted label and score:\n" +
-                              $"{IrisFlowers[labelsArray[0]]}: {resultPrediction3.Score[0]:0####}\n" +
+                              $"{IrisFlowers[labelsArray[0]]}: {resultPrediction3.Score[0]:0.####}\n" +
                               $"{IrisFlowers[labelsArray[1]]}: {resultPrediction3.Score[1]:0.####}\n" +
                               $"{IrisFlowers[labelsArray[2]]}: {resultPrediction3.Score[2]:0.####}\n");
+        }
+
+        private static List<Dictionary<string, float>> PredictValues(MLContext context, ITransformer trainedMulticlassModel, IEnumerable<IrisData> dataToPredict)
+        {
+            var categories = new List<string>()
+            {
+                "Setosa",
+                "Virginica",
+                "Versicolor"
+            };
+            var IrisFlowers = OutputCategories(categories);
+
+            var predEngine = context.Model.CreatePredictionEngine<IrisData, IrisPrediction>(trainedMulticlassModel);
+            VBuffer<float> keys = default;
+            predEngine.OutputSchema["PredictedLabel"].GetKeyValues(ref keys);
+            var labelsArray = keys.DenseValues().ToArray();
+
+            var probabilities = new List<Dictionary<string, float>>();
+            foreach(var data in dataToPredict)
+            {
+                var resultPrediction = predEngine.Predict(data);
+                var probabilitiesByLabel = new Dictionary<string, float>();
+                for (int i = 0; i < labelsArray.Length; i++)
+                {
+                    probabilitiesByLabel.Add(IrisFlowers[labelsArray[i]], resultPrediction.Score[i]);
+                }
+                data.Probabilities = probabilitiesByLabel;
+                probabilities.Add(data.Probabilities);
+            }
+            return probabilities;
         }
 
         private static void CreateDirectoryAndExtractZipfile(string dirPath, string zipfileLocation)

@@ -9,7 +9,13 @@ using MulticlassClassification.DataStructures;
 
 namespace MulticlassClassification
 {
-    public class ModelBuilder
+    public interface IModelBuilder
+    {
+        EstimatorChain<TransformerChain<KeyToValueMappingTransformer>> TrainingModelSetup(MLContext context);
+        EstimatorChain<KeyToValueMappingTransformer> CreateTrainerForModel(MLContext context);
+        void TrainModel(MLContext context);
+    }
+    public class ModelBuilder : IModelBuilder
     {
         public ModelBuilder()
         {
