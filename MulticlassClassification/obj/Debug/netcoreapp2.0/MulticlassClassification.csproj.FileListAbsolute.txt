@@ -24,3 +24,5 @@ C:\Dev\MLMulticlassClassification\MulticlassClassificationTest\MulticlassClassif
 C:\Dev\MLMulticlassClassification\MulticlassClassificationTest\MulticlassClassification\obj\Debug\netcoreapp2.0\MulticlassClassification.AssemblyInfo.cs
 C:\Dev\MLMulticlassClassification\MulticlassClassificationTest\MulticlassClassification\obj\Debug\netcoreapp2.0\MulticlassClassification.dll
 C:\Dev\MLMulticlassClassification\MulticlassClassificationTest\MulticlassClassification\obj\Debug\netcoreapp2.0\MulticlassClassification.pdb
+C:\Dev\MLMulticlassClassification\MulticlassClassificationTest\MulticlassClassification\obj\Debug\netcoreapp2.0\MulticlassClassification.csprojAssemblyReference.cache
+C:\Dev\MLMulticlassClassification\MulticlassClassificationTest\MulticlassClassification\bin\Debug\netcoreapp2.0\Data\FullData.txt

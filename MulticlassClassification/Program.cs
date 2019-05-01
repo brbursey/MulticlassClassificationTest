@@ -22,9 +22,10 @@ namespace MulticlassClassification
 
         public static void Main(string[] args)
         {
+            //all of this can be extracted into a Classifier(??) class
             var context = new MLContext(seed: 0);
             var trainingDataView = context.Data.LoadFromTextFile<IrisData>(TrainDataPath, hasHeader: true);
-            var testDataView = context.Data.LoadFromTextFile<IrisData>(TestDataPath, hasHeader: true);
+            var testDataView = context.Data.LoadFromTextFile<IrisData>(TestDataPath, hasHeader: true); 
 
             var model = new ModelBuilder();
             var trainer = model.CreateTrainerForModel(context);
@@ -36,7 +37,6 @@ namespace MulticlassClassification
             var trainedMulticlassModel = context.Model.Load(ModelPath, out var modelInputSchema);
             PredictTestValues(context, trainedMulticlassModel);
             //var dataPredictions = PredictValues(context, trainedMulticlassModel, irisData);
-            //TODO: Create method that takes inputs and creates objects for each line
         }
 
         private static void FitAndSaveModel(MLContext context, 
@@ -103,7 +103,7 @@ namespace MulticlassClassification
                               $"{IrisFlowers[labelsArray[2]]}: {resultPrediction3.Score[2]:0.####}\n");
         }
 
-        private static List<Dictionary<string, float>> PredictValues(MLContext context, ITransformer trainedMulticlassModel, IEnumerable<IrisData> dataToPredict)
+        private static IEnumerable<Dictionary<string, float>> PredictValues(MLContext context, ITransformer trainedMulticlassModel, IEnumerable<IrisData> dataToPredict)
         {
             var categories = new List<string>()
             {
@@ -127,8 +127,7 @@ namespace MulticlassClassification
                 {
                     probabilitiesByLabel.Add(IrisFlowers[labelsArray[i]], resultPrediction.Score[i]);
                 }
-                data.Probabilities = probabilitiesByLabel;
-                probabilities.Add(data.Probabilities);
+                probabilities.Add(probabilitiesByLabel);
             }
             return probabilities;
         }

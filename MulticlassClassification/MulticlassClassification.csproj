@@ -12,6 +12,7 @@
 	<Content Include="MLModels\**\*">
 	 <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+	<None Remove="Data\FullData.txt" />
     <PackageReference Include="Microsoft.ML" Version="1.0.0-preview" />
   </ItemGroup>
 
