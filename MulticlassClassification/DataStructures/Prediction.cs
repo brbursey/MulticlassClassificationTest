@@ -1,6 +1,10 @@
+using Microsoft.ML.Data;
+using Microsoft.ML.Transforms.Text;
+
 namespace MulticlassClassification.DataStructures
 {
-    public class IrisPrediction
+ 
+    public class Prediction
     {
         public float[] Score;
     }

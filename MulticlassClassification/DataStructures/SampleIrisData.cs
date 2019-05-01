@@ -1,6 +1,9 @@
 namespace MulticlassClassification.DataStructures
 {
-    public class SampleIrisData
+    public interface ISampleData
+    {
+    }
+    public class SampleIrisData : ISampleData
     {
         internal static readonly IrisData Iris1 = new IrisData()
         {

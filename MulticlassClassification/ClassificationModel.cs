@@ -8,113 +8,110 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace MulticlassClassification
 {
-    public static class ClassificationModel
+    public class ClassificationModel
     {
-        private static string BaseModelPath = ".\\MLModels";
-        private static string ModelZipFilePath = $"{BaseModelPath}\\TestClassificationModel.zip";
+        private readonly IProvider provider;
+        private readonly MLContext Context;
+        private readonly IDataView TrainingDataView;
+        private readonly IDataView TestDataView;
+        private readonly IModelBuilder ModelBuilder;
 
-        private static string ModelPath = GetAbsolutePath($"{BaseModelPath}\\TestClassificationModel.zip");
-        private static string TrainDataPath = GetAbsolutePath(".\\Data\\TrainData.txt");
-        private static string TestDataPath = GetAbsolutePath(".\\Data\\TestData.txt");
+        private readonly EstimatorChain<KeyToValueMappingTransformer> Trainer;
+        private readonly EstimatorChain<TransformerChain<KeyToValueMappingTransformer>> Pipeline;
 
-        public static void MakeModel()
+        private readonly ITransformer TrainedMulticlassModel;
+
+        public ClassificationModel(IProvider provider)
         {
-            //all of this can be extracted into a Classifier(??) class
-            var context = new MLContext(seed: 0);
-            var trainingDataView = context.Data.LoadFromTextFile<IrisData>(TrainDataPath, hasHeader: true);
-            var testDataView = context.Data.LoadFromTextFile<IrisData>(TestDataPath, hasHeader: true);
-
-            var model = new ModelBuilder();
-            var trainer = model.CreateTrainerForModel(context);
-            var pipeline = model.TrainingModelSetup(context);
-
-            CreateDirectoryAndExtractZipfile(BaseModelPath, ModelZipFilePath);
-            FitAndSaveModel(context, trainingDataView, trainer, pipeline);
-
-            var trainedMulticlassModel = context.Model.Load(ModelPath, out var modelInputSchema);
-            PredictTestValues(context, trainedMulticlassModel);
-            //var dataPredictions = PredictValues(context, trainedMulticlassModel, irisData);
+            this.provider = provider;
+            Context = new MLContext(seed: 0);
+            TrainingDataView = provider.TrainingDataView;
+            TestDataView = provider.TestDataView;
+            ModelBuilder = provider.ModelBuilder;
+            Trainer = ModelBuilder.CreateTrainerForModel(Context);
+            Pipeline = ModelBuilder.TrainingModelSetup(Context);
+            TrainedMulticlassModel = Context.Model.Load(provider.ModelPath, out var modelInputSchema);
+        }
+        
+        public void MakeModel()
+        {
+            CreateDirectoryAndExtractZipfile(provider.BaseModelPath, provider.ModelZipFilePath);
+            FitAndSaveModel();
+            //PredictTestValues();
+            //var dataPredictions = PredictValues(irisData);
         }
 
-        private static void FitAndSaveModel(MLContext context,
-            IDataView trainingDataView,
-            EstimatorChain<KeyToValueMappingTransformer> trainer,
-            EstimatorChain<TransformerChain<KeyToValueMappingTransformer>> pipeline)
+        private void FitAndSaveModel()
         {
             var stopwatch = Stopwatch.StartNew();
-            var trainedModel = pipeline.Fit(trainingDataView);
+            var trainedModel = Pipeline.Fit(TrainingDataView);
             stopwatch.Stop();
             long elapsedMs = stopwatch.ElapsedMilliseconds;
             Console.WriteLine($"***** Training time: {elapsedMs / 1000} seconds *****");
 
-            var predictions = trainedModel.Transform(trainingDataView);
-            var metrics = context.MulticlassClassification.Evaluate(predictions, "Label", "Score");
+            var predictions = trainedModel.Transform(TestDataView);
+            var metrics = Context.MulticlassClassification.Evaluate(predictions, "Label", "Score");
 
-            ConsoleHelper.PrintMultiClassClassificationMetrics(trainer.ToString(), metrics);
+            ConsoleHelper.PrintMultiClassClassificationMetrics(Trainer.ToString(), metrics);
 
-            context.Model.Save(trainedModel,
-                               trainingDataView.Schema,
-                               ModelPath);
+            Context.Model.Save(trainedModel,
+                               TrainingDataView.Schema,
+                               provider.ModelPath);
 
-            Console.WriteLine("The model is saved to {0}", ModelPath);
+            Console.WriteLine("The model is saved to {0}", provider.ModelPath);
         }
 
-        private static void PredictTestValues(MLContext context, ITransformer trainedMulticlassModel)
+//        private void PredictTestValues()
+//        {
+//            var categories = new List<string>()
+//            {
+//                "Setosa",
+//                "Virginica",
+//                "Versicolor"
+//            };
+//            var IrisFlowers = OutputCategories(categories);
+//
+//            var predEngine = Context.Model.CreatePredictionEngine<IrisData, Prediction>(TrainedMulticlassModel);
+//            VBuffer<float> keys = default;
+//            predEngine.OutputSchema["PredictedLabel"].GetKeyValues(ref keys);
+//            var labelsArray = keys.DenseValues().ToArray();
+//            Console.WriteLine("=====Predicting using model====");
+//
+//            var resultPrediction1 = predEngine.Predict(SampleIrisData.Iris1);
+//
+//            Console.WriteLine($"Actual: Setosa.\n" +
+//                              $"Predicted label and score:\n" +
+//                              $"{IrisFlowers[labelsArray[0]]}: {resultPrediction1.Score[0]:0.####}\n" +
+//                              $"{IrisFlowers[labelsArray[1]]}: {resultPrediction1.Score[1]:0.####}\n" +
+//                              $"{IrisFlowers[labelsArray[2]]}: {resultPrediction1.Score[2]:0.####}\n");
+//
+//            var resultPrediction2 = predEngine.Predict(SampleIrisData.Iris2);
+//
+//            Console.WriteLine($"Actual: Virginica.\n" +
+//                              $"Predicted label and score:\n" +
+//                              $"{IrisFlowers[labelsArray[0]]}: {resultPrediction2.Score[0]:0.####}\n" +
+//                              $"{IrisFlowers[labelsArray[1]]}: {resultPrediction2.Score[1]:0.####}\n" +
+//                              $"{IrisFlowers[labelsArray[2]]}: {resultPrediction2.Score[2]:0.####}\n");
+//
+//            var resultPrediction3 = predEngine.Predict(SampleIrisData.Iris3);
+//
+//            Console.WriteLine($"Actual: Versicolor.\n" +
+//                              $"Predicted label and score:\n" +
+//                              $"{IrisFlowers[labelsArray[0]]}: {resultPrediction3.Score[0]:0.####}\n" +
+//                              $"{IrisFlowers[labelsArray[1]]}: {resultPrediction3.Score[1]:0.####}\n" +
+//                              $"{IrisFlowers[labelsArray[2]]}: {resultPrediction3.Score[2]:0.####}\n");
+//        }
+
+        public IEnumerable<Dictionary<string, float>> PredictValues(IEnumerable<IData> dataToPredict, IEnumerable<string> dataCategories)
         {
-            var categories = new List<string>()
-            {
-                "Setosa",
-                "Virginica",
-                "Versicolor"
-            };
-            var IrisFlowers = OutputCategories(categories);
+            var categories = OutputCategories(dataCategories);
 
-            var predEngine = context.Model.CreatePredictionEngine<IrisData, IrisPrediction>(trainedMulticlassModel);
-            VBuffer<float> keys = default;
-            predEngine.OutputSchema["PredictedLabel"].GetKeyValues(ref keys);
-            var labelsArray = keys.DenseValues().ToArray();
-            Console.WriteLine("=====Predicting using model====");
-
-            var resultPrediction1 = predEngine.Predict(SampleIrisData.Iris1);
-
-            Console.WriteLine($"Actual: Setosa.\n" +
-                              $"Predicted label and score:\n" +
-                              $"{IrisFlowers[labelsArray[0]]}: {resultPrediction1.Score[0]:0.####}\n" +
-                              $"{IrisFlowers[labelsArray[1]]}: {resultPrediction1.Score[1]:0.####}\n" +
-                              $"{IrisFlowers[labelsArray[2]]}: {resultPrediction1.Score[2]:0.####}\n");
-
-            var resultPrediction2 = predEngine.Predict(SampleIrisData.Iris2);
-
-            Console.WriteLine($"Actual: Virginica.\n" +
-                              $"Predicted label and score:\n" +
-                              $"{IrisFlowers[labelsArray[0]]}: {resultPrediction2.Score[0]:0.####}\n" +
-                              $"{IrisFlowers[labelsArray[1]]}: {resultPrediction2.Score[1]:0.####}\n" +
-                              $"{IrisFlowers[labelsArray[2]]}: {resultPrediction2.Score[2]:0.####}\n");
-
-            var resultPrediction3 = predEngine.Predict(SampleIrisData.Iris3);
-
-            Console.WriteLine($"Actual: Versicolor.\n" +
-                              $"Predicted label and score:\n" +
-                              $"{IrisFlowers[labelsArray[0]]}: {resultPrediction3.Score[0]:0.####}\n" +
-                              $"{IrisFlowers[labelsArray[1]]}: {resultPrediction3.Score[1]:0.####}\n" +
-                              $"{IrisFlowers[labelsArray[2]]}: {resultPrediction3.Score[2]:0.####}\n");
-        }
-
-        private static IEnumerable<Dictionary<string, float>> PredictValues(MLContext context, ITransformer trainedMulticlassModel, IEnumerable<IrisData> dataToPredict)
-        {
-            var categories = new List<string>()
-            {
-                "Setosa",
-                "Virginica",
-                "Versicolor"
-            };
-            var IrisFlowers = OutputCategories(categories);
-
-            var predEngine = context.Model.CreatePredictionEngine<IrisData, IrisPrediction>(trainedMulticlassModel);
+            var predEngine = Context.Model.CreatePredictionEngine<IData, Prediction>(TrainedMulticlassModel);
             VBuffer<float> keys = default;
             predEngine.OutputSchema["PredictedLabel"].GetKeyValues(ref keys);
             var labelsArray = keys.DenseValues().ToArray();
@@ -124,9 +121,9 @@ namespace MulticlassClassification
             {
                 var resultPrediction = predEngine.Predict(data);
                 var probabilitiesByLabel = new Dictionary<string, float>();
-                for (int i = 0; i < labelsArray.Length; i++)
+                for (var i = 0; i < labelsArray.Length; i++)
                 {
-                    probabilitiesByLabel.Add(IrisFlowers[labelsArray[i]], resultPrediction.Score[i]);
+                    probabilitiesByLabel.Add(categories[labelsArray[i]], resultPrediction.Score[i]);
                 }
                 probabilities.Add(probabilitiesByLabel);
             }
@@ -143,7 +140,7 @@ namespace MulticlassClassification
             ZipFile.ExtractToDirectory(zipfileLocation, dirPath);
         }
 
-        private static Dictionary<float, string> OutputCategories(List<string> categories)
+        private static Dictionary<float, string> OutputCategories(IEnumerable<string> categories)
         {
             var indexToCategory = new Dictionary<float, string>();
             var index = 0;
@@ -153,16 +150,6 @@ namespace MulticlassClassification
                 index = index + 1;
             }
             return indexToCategory;
-        }
-
-        public static string GetAbsolutePath(string relativePath)
-        {
-            var dataRoot = new FileInfo(typeof(Program).Assembly.Location);
-            string assemblyFolderPath = dataRoot.Directory.FullName;
-
-            string fullPath = Path.Combine(assemblyFolderPath, relativePath);
-
-            return fullPath;
         }
     }
 }

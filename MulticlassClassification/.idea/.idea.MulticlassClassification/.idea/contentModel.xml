@@ -3,22 +3,27 @@
   <component name="ContentModelStore">
     <e p="C:\projects.net\MulticlassClassificationTest\MulticlassClassification" t="IncludeRecursive">
       <e p="bin" t="ExcludeRecursive" />
-      <e p="Class1.cs" t="Include" />
+      <e p="ClassificationModel.cs" t="Include" />
       <e p="ConsoleHelper.cs" t="Include" />
       <e p="Data" t="Include">
+        <e p="FullData.txt" t="Include" />
         <e p="TestData.txt" t="Include" />
         <e p="TrainData.txt" t="Include" />
       </e>
       <e p="DataStructures" t="Include">
         <e p="IrisData.cs" t="Include" />
-        <e p="IrisPrediction.cs" t="Include" />
+        <e p="Prediction.cs" t="Include" />
         <e p="SampleIrisData.cs" t="Include" />
       </e>
       <e p="IRIS.csv" t="Include" />
+      <e p="IrisDataParser.cs" t="Include" />
+      <e p="IrisDataPrediction.cs" t="Include" />
+      <e p="IrisModelBuilder.cs" t="Include" />
+      <e p="IrisProvider.cs" t="Include" />
       <e p="MLModels" t="Include">
         <e p="TestClassificationModel.zip" t="Include" />
       </e>
-      <e p="ModelBuilder.cs" t="Include" />
+      <e p="ModelPathInfo.cs" t="Include" />
       <e p="MulticlassClassification.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive">
         <e p="Debug" t="Include">
@@ -30,6 +35,9 @@
       <e p="packages" t="ExcludeRecursive" />
       <e p="Program.cs" t="Include" />
       <e p="README.md" t="Include" />
+      <e p="Repositories" t="Include">
+        <e p="IrisDataRepository.cs" t="Include" />
+      </e>
     </e>
     <e p="C:\Users\bbursey\.Rider2018.3\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\bbursey\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_MulticlassClassification.282784329.00" t="ExcludeRecursive" />

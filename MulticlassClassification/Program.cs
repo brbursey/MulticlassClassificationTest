@@ -27,7 +27,7 @@ namespace MulticlassClassification
             var trainingDataView = context.Data.LoadFromTextFile<IrisData>(TrainDataPath, hasHeader: true);
             var testDataView = context.Data.LoadFromTextFile<IrisData>(TestDataPath, hasHeader: true); 
 
-            var model = new ModelBuilder();
+            var model = new IrisModelBuilder();
             var trainer = model.CreateTrainerForModel(context);
             var pipeline = model.TrainingModelSetup(context);
 
@@ -72,7 +72,7 @@ namespace MulticlassClassification
             };
             var IrisFlowers = OutputCategories(categories);
 
-            var predEngine = context.Model.CreatePredictionEngine<IrisData, IrisPrediction>(trainedMulticlassModel);
+            var predEngine = context.Model.CreatePredictionEngine<IrisData, Prediction>(trainedMulticlassModel);
             VBuffer<float> keys = default;
             predEngine.OutputSchema["PredictedLabel"].GetKeyValues(ref keys);
             var labelsArray = keys.DenseValues().ToArray();
@@ -113,7 +113,7 @@ namespace MulticlassClassification
             };
             var IrisFlowers = OutputCategories(categories);
 
-            var predEngine = context.Model.CreatePredictionEngine<IrisData, IrisPrediction>(trainedMulticlassModel);
+            var predEngine = context.Model.CreatePredictionEngine<IrisData, Prediction>(trainedMulticlassModel);
             VBuffer<float> keys = default;
             predEngine.OutputSchema["PredictedLabel"].GetKeyValues(ref keys);
             var labelsArray = keys.DenseValues().ToArray();

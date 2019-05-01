@@ -5,7 +5,10 @@ using Microsoft.ML.Data;
 
 namespace MulticlassClassification.DataStructures
 {
-     public class IrisData
+    public interface IData
+    {
+    }
+     public class IrisData : IData
         {
             [LoadColumn(0)]
             public float Label;
@@ -22,6 +25,7 @@ namespace MulticlassClassification.DataStructures
             [LoadColumn(4)]
             public float PetalWidth;
 
-            public Dictionary<string, float> Probabilities { get; set; }
-    }
+            [LoadColumn(5)]
+            public string Poop;
+        }
 }

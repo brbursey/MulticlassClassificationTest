@@ -8,8 +8,8 @@ namespace MulticlassClassification.Repositories
     public interface IIrisDataRepository
     {
         IEnumerable<IrisData> GetIrisData(string textfilePath);
-        IEnumerable<Dictionary<string, float>> GetProbabilities();
     }
+    
     public class IrisDataRepository : IIrisDataRepository
     {
         private readonly IIrisDataParser irisDataParser;
@@ -23,14 +23,5 @@ namespace MulticlassClassification.Repositories
             var irisData = irisDataParser.Parse(textFilePath);
             return irisData;
         }
-
-        //TODO: Make this actually do something. Reconsider how Program.PredictValues() is designed
-        public IEnumerable<Dictionary<string, float>> GetProbabilities()
-        {
-            var probs = new List<Dictionary<string, float>>();
-            //var probs = ClassificationModel.PredictValues();
-            return probs;
-        }
-
     }
 }

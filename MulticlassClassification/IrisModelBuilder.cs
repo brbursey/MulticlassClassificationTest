@@ -15,12 +15,8 @@ namespace MulticlassClassification
         EstimatorChain<KeyToValueMappingTransformer> CreateTrainerForModel(MLContext context);
         void TrainModel(MLContext context);
     }
-    public class ModelBuilder : IModelBuilder
+    public class IrisModelBuilder : IModelBuilder
     {
-        public ModelBuilder()
-        {
-        }
-
         public EstimatorChain<TransformerChain<KeyToValueMappingTransformer>> TrainingModelSetup(MLContext context)
         {
             var outputDataSetup = context
@@ -36,6 +32,7 @@ namespace MulticlassClassification
                     );
             var dataPipeline = outputDataSetup.Append(inputDataSetup).AppendCacheCheckpoint(context);
             
+            //TODO: This dude is run twice. FIX IT!
             var trainer = CreateTrainerForModel(context);
             var trainingPipeline = dataPipeline.Append(trainer);
             return trainingPipeline;
@@ -64,18 +61,7 @@ namespace MulticlassClassification
             var trainer = context
                 .MulticlassClassification
                 .Trainers
-                .SdcaMaximumEntropy(labelColumnName: "KeyColumn", featureColumnName: "Features");
+                .NaiveBayes(labelColumnName: "KeyColumn", featureColumnName: "Features");
         }
-
-        public static string GetAbsolutePath(string relativePath)
-        {
-            var dataRoot = new FileInfo(typeof(Program).Assembly.Location);
-            string assemblyFolderPath = dataRoot.Directory.FullName;
-
-            string fullPath = Path.Combine(assemblyFolderPath, relativePath);
-
-            return fullPath;
-        }
-
     }
 }

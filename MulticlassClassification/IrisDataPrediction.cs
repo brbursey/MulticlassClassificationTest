@@ -8,15 +8,23 @@ namespace MulticlassClassification
 {
     public class IrisDataPrediction
     {
-        public IEnumerable<string> Categories { get; set; }
+        private readonly IEnumerable<string> Categories = new List<string>
+        {
+            "Setosa",
+            "Virginica",
+            "Versicolor"
+        };
+        public IEnumerable<IrisData> Data { get; set; }
 
         private readonly IIrisDataRepository irisDataRepository;
-        public IrisDataPrediction(IIrisDataRepository irisDataRepository)
+        private readonly IProvider irisProvider;
+        public IrisDataPrediction(IIrisDataRepository irisDataRepository, IProvider irisProvider)
         {
             this.irisDataRepository = irisDataRepository;
+            this.irisProvider = irisProvider;
         }
 
-        public IEnumerable<IrisData> Data()
+        private IEnumerable<IrisData> GetData()
         {
             var dataParser = new IrisDataParser();
             return irisDataRepository.GetIrisData(dataParser.RelativeFilePath);
@@ -24,7 +32,12 @@ namespace MulticlassClassification
 
         public IEnumerable<Dictionary<string, float>> Probabilities()
         {
-            return irisDataRepository.GetProbabilities();
+            var irisData = GetData();
+            var classificationModel = new ClassificationModel(irisProvider);
+            var probabilities = classificationModel.PredictValues(irisData, Categories);
+            return probabilities;
         }
+
     }
 }
+                                
