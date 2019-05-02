@@ -1,4 +1,5 @@
-﻿using MulticlassClassification.Repositories;
+﻿using System.Linq;
+using MulticlassClassification.Repositories;
 
 namespace MulticlassClassification
 {
@@ -11,11 +12,14 @@ namespace MulticlassClassification
             IIrisDataRepository dataRepository = new IrisDataRepository(dataParser);
             
             var classifier = new ClassificationModel(provider);
-            var prediction = new IrisDataPrediction(dataRepository, provider);
+            var prediction = new IrisDataPrediction(dataRepository);
+            
+//            var data = prediction.GetData();
+//            var probs = prediction.GetProbabilities();
            
             classifier.CreateDirectoryAndExtractZipfile(provider.BaseModelPath, provider.ModelZipFilePath);
             classifier.FitAndSaveModel();
-            classifier.PredictValues(prediction.Data, prediction.Categories);
+            prediction.Probabilities = classifier.PredictValues(prediction.Data, prediction.Categories);
         }
     }
 }
