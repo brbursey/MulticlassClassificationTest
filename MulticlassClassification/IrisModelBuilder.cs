@@ -11,13 +11,12 @@ namespace MulticlassClassification
 {
     public interface IModelBuilder
     {
-        EstimatorChain<TransformerChain<KeyToValueMappingTransformer>> TrainingModelSetup(MLContext context);
+        EstimatorChain<ColumnConcatenatingTransformer> DataPipelineSetup(MLContext context);
         EstimatorChain<KeyToValueMappingTransformer> CreateTrainerForModel(MLContext context);
-        void TrainModel(MLContext context);
     }
     public class IrisModelBuilder : IModelBuilder
     {
-        public EstimatorChain<TransformerChain<KeyToValueMappingTransformer>> TrainingModelSetup(MLContext context)
+        public EstimatorChain<ColumnConcatenatingTransformer> DataPipelineSetup(MLContext context)
         {
             var outputDataSetup = context
                 .Transforms
@@ -31,11 +30,12 @@ namespace MulticlassClassification
                     nameof(IrisData.PetalWidth)
                     );
             var dataPipeline = outputDataSetup.Append(inputDataSetup).AppendCacheCheckpoint(context);
-            
+            return dataPipeline;
+
             //TODO: This dude is run twice. FIX IT!
-            var trainer = CreateTrainerForModel(context);
-            var trainingPipeline = dataPipeline.Append(trainer);
-            return trainingPipeline;
+//            var trainer = CreateTrainerForModel(context);
+//            var trainingPipeline = dataPipeline.Append(trainer);
+//            return trainingPipeline;
         }
 
         public EstimatorChain<KeyToValueMappingTransformer> CreateTrainerForModel(MLContext context)
@@ -54,14 +54,6 @@ namespace MulticlassClassification
                             outputColumnName: nameof(IrisData.Label), 
                             inputColumnName: "KeyColumn"));
             return trainer;
-        }
-
-        public void TrainModel(MLContext context)
-        {
-            var trainer = context
-                .MulticlassClassification
-                .Trainers
-                .NaiveBayes(labelColumnName: "KeyColumn", featureColumnName: "Features");
-        }
+        }     
     }
 }

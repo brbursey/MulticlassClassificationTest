@@ -29,7 +29,7 @@ namespace MulticlassClassification
 
             var model = new IrisModelBuilder();
             var trainer = model.CreateTrainerForModel(context);
-            var pipeline = model.TrainingModelSetup(context);
+            var pipeline = model.DataPipelineSetup(context).Append(trainer);
 
             CreateDirectoryAndExtractZipfile(BaseModelPath, ModelZipFilePath);
             FitAndSaveModel(context, trainingDataView, trainer, pipeline);

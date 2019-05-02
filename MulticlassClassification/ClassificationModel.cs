@@ -15,18 +15,18 @@ namespace MulticlassClassification
 {
     public class ClassificationModel
     {
-        private readonly IProvider provider;
+        private readonly IDataProvider provider;
         private readonly MLContext Context;
         private readonly IDataView TrainingDataView;
         private readonly IDataView TestDataView;
         private readonly IModelBuilder ModelBuilder;
 
         private readonly EstimatorChain<KeyToValueMappingTransformer> Trainer;
-        private readonly EstimatorChain<TransformerChain<KeyToValueMappingTransformer>> Pipeline;
+        private readonly EstimatorChain<ColumnConcatenatingTransformer> Pipeline;
 
         private readonly ITransformer TrainedMulticlassModel;
 
-        public ClassificationModel(IProvider provider)
+        public ClassificationModel(IDataProvider provider)
         {
             this.provider = provider;
             Context = new MLContext(seed: 0);
@@ -34,7 +34,7 @@ namespace MulticlassClassification
             TestDataView = provider.TestDataView;
             ModelBuilder = provider.ModelBuilder;
             Trainer = ModelBuilder.CreateTrainerForModel(Context);
-            Pipeline = ModelBuilder.TrainingModelSetup(Context);
+            Pipeline = ModelBuilder.DataPipelineSetup(Context);
             TrainedMulticlassModel = Context.Model.Load(provider.ModelPath, out var modelInputSchema);
         }
         
@@ -42,8 +42,6 @@ namespace MulticlassClassification
         {
             CreateDirectoryAndExtractZipfile(provider.BaseModelPath, provider.ModelZipFilePath);
             FitAndSaveModel();
-            //PredictTestValues();
-            //var dataPredictions = PredictValues(irisData);
         }
 
         private void FitAndSaveModel()

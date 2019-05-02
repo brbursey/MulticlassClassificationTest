@@ -5,7 +5,7 @@ using MulticlassClassification.DataStructures;
 
 namespace MulticlassClassification
 {
-    public interface IProvider
+    public interface IDataProvider
     {
         string BaseModelPath { get; set; }
         string ModelZipFilePath { get; set; }
@@ -15,7 +15,7 @@ namespace MulticlassClassification
         IModelBuilder ModelBuilder { get; set; }
         
     }
-    public class IrisProvider : IProvider
+    public class IrisDataProvider : IDataProvider
     {
         public string BaseModelPath { get; set; }
         public string ModelZipFilePath { get; set; }
@@ -26,7 +26,7 @@ namespace MulticlassClassification
         public IDataView TestDataView { get; set; }
         public IModelBuilder ModelBuilder { get; set; }
 
-        public IrisProvider(MLContext context)
+        public IrisDataProvider(MLContext context)
         {
             BaseModelPath = ".\\MLModels";
             ModelZipFilePath = $"{BaseModelPath}\\TestClassificationModel.zip";
@@ -38,7 +38,7 @@ namespace MulticlassClassification
             ModelBuilder = new IrisModelBuilder();
         }
 
-        public static string GetAbsolutePath(string relativePath)
+        private static string GetAbsolutePath(string relativePath)
         {
             var dataRoot = new FileInfo(typeof(Program).Assembly.Location);
             string assemblyFolderPath = dataRoot.Directory.FullName;
