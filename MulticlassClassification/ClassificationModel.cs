@@ -16,20 +16,21 @@ namespace MulticlassClassification
     public class ClassificationModel
     {
         private readonly IDataProvider provider;
-        private readonly MLContext Context;
+        public readonly MLContext Context;
+        
         private readonly IDataView TrainingDataView;
         private readonly IDataView TestDataView;
         private readonly IModelBuilder ModelBuilder;
 
-        private readonly EstimatorChain<KeyToValueMappingTransformer> Trainer;
-        private readonly EstimatorChain<ColumnConcatenatingTransformer> Pipeline;
+        public readonly EstimatorChain<KeyToValueMappingTransformer> Trainer;
+        public readonly EstimatorChain<ColumnConcatenatingTransformer> Pipeline;
 
-        private readonly ITransformer TrainedMulticlassModel;
+        public readonly ITransformer TrainedMulticlassModel;
 
         public ClassificationModel(IDataProvider provider)
         {
             this.provider = provider;
-            Context = new MLContext(seed: 0);
+            Context = provider.Context;
             TrainingDataView = provider.TrainingDataView;
             TestDataView = provider.TestDataView;
             ModelBuilder = provider.ModelBuilder;
@@ -38,16 +39,11 @@ namespace MulticlassClassification
             TrainedMulticlassModel = Context.Model.Load(provider.ModelPath, out var modelInputSchema);
         }
         
-        public void MakeModel()
-        {
-            CreateDirectoryAndExtractZipfile(provider.BaseModelPath, provider.ModelZipFilePath);
-            FitAndSaveModel();
-        }
-
-        private void FitAndSaveModel()
+        public void FitAndSaveModel()
         {
             var stopwatch = Stopwatch.StartNew();
-            var trainedModel = Pipeline.Fit(TrainingDataView);
+            var pipeline = Pipeline.Append(Trainer);
+            var trainedModel = pipeline.Fit(TrainingDataView);
             stopwatch.Stop();
             long elapsedMs = stopwatch.ElapsedMilliseconds;
             Console.WriteLine($"***** Training time: {elapsedMs / 1000} seconds *****");
@@ -105,11 +101,11 @@ namespace MulticlassClassification
 //                              $"{IrisFlowers[labelsArray[2]]}: {resultPrediction3.Score[2]:0.####}\n");
 //        }
 
-        public IEnumerable<Dictionary<string, float>> PredictValues(IEnumerable<IData> dataToPredict, IEnumerable<string> dataCategories)
+        public IEnumerable<Dictionary<string, float>> PredictValues(IEnumerable<IrisData> dataToPredict, IEnumerable<string> dataCategories)
         {
             var categories = OutputCategories(dataCategories);
 
-            var predEngine = Context.Model.CreatePredictionEngine<IData, Prediction>(TrainedMulticlassModel);
+            var predEngine = Context.Model.CreatePredictionEngine<IrisData, IrisPrediction>(TrainedMulticlassModel);
             VBuffer<float> keys = default;
             predEngine.OutputSchema["PredictedLabel"].GetKeyValues(ref keys);
             var labelsArray = keys.DenseValues().ToArray();
@@ -128,7 +124,7 @@ namespace MulticlassClassification
             return probabilities;
         }
 
-        private static void CreateDirectoryAndExtractZipfile(string dirPath, string zipfileLocation)
+        public void CreateDirectoryAndExtractZipfile(string dirPath, string zipfileLocation)
         {
             Directory.CreateDirectory(dirPath);
             if (!File.Exists(zipfileLocation))
@@ -138,7 +134,7 @@ namespace MulticlassClassification
             ZipFile.ExtractToDirectory(zipfileLocation, dirPath);
         }
 
-        private static Dictionary<float, string> OutputCategories(IEnumerable<string> categories)
+        private Dictionary<float, string> OutputCategories(IEnumerable<string> categories)
         {
             var indexToCategory = new Dictionary<float, string>();
             var index = 0;

@@ -1,14 +1,12 @@
 ﻿using MulticlassClassification.DataStructures;
 using MulticlassClassification.Repositories;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MulticlassClassification
 {
     public class IrisDataPrediction
     {
-        private readonly IEnumerable<string> Categories = new List<string>
+        public readonly IEnumerable<string> Categories = new List<string>
         {
             "Setosa",
             "Virginica",
@@ -17,11 +15,12 @@ namespace MulticlassClassification
         public IEnumerable<IrisData> Data { get; set; }
 
         private readonly IIrisDataRepository irisDataRepository;
-        private readonly IProvider irisProvider;
-        public IrisDataPrediction(IIrisDataRepository irisDataRepository, IProvider irisProvider)
+        private readonly IDataProvider irisProvider;
+        public IrisDataPrediction(IIrisDataRepository irisDataRepository, IDataProvider irisProvider)
         {
             this.irisDataRepository = irisDataRepository;
             this.irisProvider = irisProvider;
+            Data = GetData();
         }
 
         private IEnumerable<IrisData> GetData()

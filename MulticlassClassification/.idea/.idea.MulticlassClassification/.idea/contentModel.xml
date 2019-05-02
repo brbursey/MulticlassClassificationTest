@@ -12,14 +12,14 @@
       </e>
       <e p="DataStructures" t="Include">
         <e p="IrisData.cs" t="Include" />
-        <e p="Prediction.cs" t="Include" />
+        <e p="IrisPrediction.cs" t="Include" />
         <e p="SampleIrisData.cs" t="Include" />
       </e>
       <e p="IRIS.csv" t="Include" />
       <e p="IrisDataParser.cs" t="Include" />
       <e p="IrisDataPrediction.cs" t="Include" />
+      <e p="IrisDataProvider.cs" t="Include" />
       <e p="IrisModelBuilder.cs" t="Include" />
-      <e p="IrisProvider.cs" t="Include" />
       <e p="MLModels" t="Include">
         <e p="TestClassificationModel.zip" t="Include" />
       </e>
