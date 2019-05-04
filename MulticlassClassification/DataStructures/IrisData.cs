@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.ML.Data;
+﻿using Microsoft.ML.Data;
 
 namespace MulticlassClassification.DataStructures
 {
@@ -24,8 +21,5 @@ namespace MulticlassClassification.DataStructures
     
             [LoadColumn(4)]
             public float PetalWidth;
-
-            [LoadColumn(5)]
-            public string Poop;
         }
 }

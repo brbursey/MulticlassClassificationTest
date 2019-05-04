@@ -1,27 +1,27 @@
 ﻿using MulticlassClassification.DataStructures;
 using MulticlassClassification.Repositories;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Reflection.Emit;
 
 namespace MulticlassClassification
 {
     public class IrisDataPrediction
     {
-        private readonly IEnumerable<string> Categories = new List<string>
+        public readonly IEnumerable<string> Categories = new List<string>
         {
             "Setosa",
             "Virginica",
             "Versicolor"
         };
-        public IEnumerable<IrisData> Data { get; set; }
+        public IEnumerable<IrisData> Data { get; }
+        public IEnumerable<Dictionary<string, float>> Probabilities { get; set; }
 
         private readonly IIrisDataRepository irisDataRepository;
-        private readonly IProvider irisProvider;
-        public IrisDataPrediction(IIrisDataRepository irisDataRepository, IProvider irisProvider)
+        public IrisDataPrediction(IIrisDataRepository irisDataRepository)
         {
             this.irisDataRepository = irisDataRepository;
-            this.irisProvider = irisProvider;
+            Data = GetData();
         }
 
         private IEnumerable<IrisData> GetData()
@@ -30,14 +30,39 @@ namespace MulticlassClassification
             return irisDataRepository.GetIrisData(dataParser.RelativeFilePath);
         }
 
-        public IEnumerable<Dictionary<string, float>> Probabilities()
+        public IEnumerable<string> MaxProbability(IEnumerable<Dictionary<string, float>> probabilities)
         {
-            var irisData = GetData();
-            var classificationModel = new ClassificationModel(irisProvider);
-            var probabilities = classificationModel.PredictValues(irisData, Categories);
-            return probabilities;
+            var prediction = new List<string>();
+            foreach (var sample in probabilities)
+            {
+                var max = 0f;
+                var label = "";
+                foreach (var category in sample)
+                {
+                    if (category.Value >= max)
+                    {
+                        max = category.Value;
+                        label = category.Key;
+                    }
+                }
+                //fix this line
+                prediction.Add(label);
+            }
+            return prediction;
         }
 
+//        public IEnumerable<IrisData> ProbabilityToDataMapper(IEnumerable<IrisData> irisData,
+//            IEnumerable<string> predictedCategories)
+//        {
+//            var data = irisData.ToList();
+//            var prob = predictedCategories.ToList();
+//            //var dataToProb = new Dictionary<IrisData, float>();
+//            for (int i = 0; i < irisData.Count(); i++)
+//            {
+//                //data[i].Label = prob[i];
+//            }
+//            return data;
+//        }
     }
 }
                                 
