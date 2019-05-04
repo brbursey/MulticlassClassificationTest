@@ -3,7 +3,10 @@
   <component name="ContentModelStore">
     <e p="C:\projects.net\MulticlassClassificationTest\MulticlassClassification" t="IncludeRecursive">
       <e p="bin" t="ExcludeRecursive" />
-      <e p="ClassificationModel.cs" t="Include" />
+      <e p="ClassificationModel" t="Include">
+        <e p="ClassificationModel.cs" t="Include" />
+        <e p="IrisModelBuilder.cs" t="Include" />
+      </e>
       <e p="ConsoleHelper.cs" t="Include" />
       <e p="Data" t="Include">
         <e p="FullData.txt" t="Include" />
@@ -19,10 +22,7 @@
       <e p="IrisDataParser.cs" t="Include" />
       <e p="IrisDataPrediction.cs" t="Include" />
       <e p="IrisDataProvider.cs" t="Include" />
-      <e p="IrisModelBuilder.cs" t="Include" />
-      <e p="MLModels" t="Include">
-        <e p="TestClassificationModel.zip" t="Include" />
-      </e>
+      <e p="MLModels" t="Include" />
       <e p="ModelPathInfo.cs" t="Include" />
       <e p="MulticlassClassification.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive">

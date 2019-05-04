@@ -25,8 +25,6 @@ namespace MulticlassClassification
         public readonly EstimatorChain<KeyToValueMappingTransformer> Trainer;
         public readonly EstimatorChain<ColumnConcatenatingTransformer> Pipeline;
 
-        public readonly ITransformer TrainedMulticlassModel;
-
         public ClassificationModel(IDataProvider provider)
         {
             this.provider = provider;
@@ -36,7 +34,7 @@ namespace MulticlassClassification
             ModelBuilder = provider.ModelBuilder;
             Trainer = ModelBuilder.CreateTrainerForModel(Context);
             Pipeline = ModelBuilder.DataPipelineSetup(Context);
-            TrainedMulticlassModel = Context.Model.Load(provider.ModelPath, out var modelInputSchema);
+
         }
         
         public void FitAndSaveModel()
@@ -103,9 +101,10 @@ namespace MulticlassClassification
 
         public IEnumerable<Dictionary<string, float>> PredictValues(IEnumerable<IrisData> dataToPredict, IEnumerable<string> dataCategories)
         {
+            var trainedMulticlassModel = Context.Model.Load(provider.ModelPath, out var modelInputSchema);
             var categories = OutputCategories(dataCategories);
 
-            var predEngine = Context.Model.CreatePredictionEngine<IrisData, IrisPrediction>(TrainedMulticlassModel);
+            var predEngine = Context.Model.CreatePredictionEngine<IrisData, IrisPrediction>(trainedMulticlassModel);
             VBuffer<float> keys = default;
             predEngine.OutputSchema["PredictedLabel"].GetKeyValues(ref keys);
             var labelsArray = keys.DenseValues().ToArray();
@@ -124,15 +123,7 @@ namespace MulticlassClassification
             return probabilities;
         }
 
-        public void CreateDirectoryAndExtractZipfile(string dirPath, string zipfileLocation)
-        {
-            Directory.CreateDirectory(dirPath);
-            if (!File.Exists(zipfileLocation))
-            {
-                ZipFile.CreateFromDirectory(dirPath, zipfileLocation);
-            }
-            ZipFile.ExtractToDirectory(zipfileLocation, dirPath);
-        }
+        
 
         private Dictionary<float, string> OutputCategories(IEnumerable<string> categories)
         {

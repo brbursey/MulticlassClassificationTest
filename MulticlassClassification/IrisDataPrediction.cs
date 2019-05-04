@@ -1,6 +1,8 @@
 ﻿using MulticlassClassification.DataStructures;
 using MulticlassClassification.Repositories;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Emit;
 
 namespace MulticlassClassification
 {
@@ -27,6 +29,40 @@ namespace MulticlassClassification
             var dataParser = new IrisDataParser();
             return irisDataRepository.GetIrisData(dataParser.RelativeFilePath);
         }
+
+        public IEnumerable<string> MaxProbability(IEnumerable<Dictionary<string, float>> probabilities)
+        {
+            var prediction = new List<string>();
+            foreach (var sample in probabilities)
+            {
+                var max = 0f;
+                var label = "";
+                foreach (var category in sample)
+                {
+                    if (category.Value >= max)
+                    {
+                        max = category.Value;
+                        label = category.Key;
+                    }
+                }
+                //fix this line
+                prediction.Add(label);
+            }
+            return prediction;
+        }
+
+//        public IEnumerable<IrisData> ProbabilityToDataMapper(IEnumerable<IrisData> irisData,
+//            IEnumerable<string> predictedCategories)
+//        {
+//            var data = irisData.ToList();
+//            var prob = predictedCategories.ToList();
+//            //var dataToProb = new Dictionary<IrisData, float>();
+//            for (int i = 0; i < irisData.Count(); i++)
+//            {
+//                //data[i].Label = prob[i];
+//            }
+//            return data;
+//        }
     }
 }
                                 

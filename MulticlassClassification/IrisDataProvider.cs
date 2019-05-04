@@ -1,4 +1,5 @@
 using System.IO;
+using System.IO.Compression;
 using Microsoft.ML;
 using MulticlassClassification.DataStructures;
 
@@ -13,7 +14,8 @@ namespace MulticlassClassification
         IDataView TrainingDataView { get; set; }
         IDataView TestDataView { get; set; }
         IModelBuilder ModelBuilder { get; set; }
-        
+
+        void CreateDirectoryAndExtractZipfile(string providerBaseModelPath, string providerModelZipFilePath);
     }
     public class IrisDataProvider : IDataProvider
     {
@@ -31,10 +33,10 @@ namespace MulticlassClassification
         {
             Context = new MLContext(seed: 0);
             BaseModelPath = ".\\MLModels";
-            ModelZipFilePath = $"{BaseModelPath}\\TestClassificationModel.zip";
+            ModelZipFilePath = GetAbsolutePath($"{BaseModelPath}\\TestClassificationModel.zip");
             ModelPath = GetAbsolutePath($"{BaseModelPath}\\TestClassificationModel.zip");
-            TrainDataPath = GetAbsolutePath(".\\Data\\TrainData.txt");
-            TestDataPath = GetAbsolutePath(".\\Data\\TestData.txt");
+            TrainDataPath = ".\\Data\\TrainData.txt";
+            TestDataPath = ".\\Data\\TestData.txt";
             TrainingDataView = Context.Data.LoadFromTextFile<IrisData>(TrainDataPath, hasHeader: true);
             TestDataView = Context.Data.LoadFromTextFile<IrisData>(TestDataPath, hasHeader: true);
             ModelBuilder = new IrisModelBuilder();
@@ -46,6 +48,18 @@ namespace MulticlassClassification
             var assemblyFolderPath = dataRoot.Directory.FullName;
             var fullPath = Path.Combine(assemblyFolderPath, relativePath);
             return fullPath;
+        }
+        
+        // needs some or a lot of work
+        public void CreateDirectoryAndExtractZipfile(string dirPath, string zipfileLocation)
+        {
+            Directory.CreateDirectory(dirPath);
+            
+//            if (!File.Exists(zipfileLocation))
+//            {
+//                ZipFile.CreateFromDirectory(dirPath, zipfileLocation);   
+//            }
+            //ZipFile.ExtractToDirectory(zipfileLocation, dirPath);
         }
     }
 }

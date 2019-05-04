@@ -1,4 +1,3 @@
-C:\projects.net\MulticlassClassificationTest\MulticlassClassification\bin\Debug\netcoreapp2.0\MLModels\TestClassificationModel.zip
 C:\Dev\MLMulticlassClassification\MulticlassClassificationTest\MulticlassClassification\bin\Debug\netcoreapp2.0\Data\TestData.txt
 C:\Dev\MLMulticlassClassification\MulticlassClassificationTest\MulticlassClassification\bin\Debug\netcoreapp2.0\Data\TrainData.txt
 C:\Dev\MLMulticlassClassification\MulticlassClassificationTest\MulticlassClassification\bin\Debug\netcoreapp2.0\MulticlassClassification.deps.json

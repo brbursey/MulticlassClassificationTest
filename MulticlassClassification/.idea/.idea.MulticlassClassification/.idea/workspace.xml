@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="aea45e71-8a07-41b0-9b4a-c3f79a9cf22a" name="Default Changelist" comment="">
+    <list default="true" id="aea45e71-8a07-41b0-9b4a-c3f79a9cf22a" name="Default Changelist" comment="Remove responsibility of getting probabilities from IrisDataPrediction to the Classifier">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MulticlassClassification/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MulticlassClassification/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MulticlassClassification/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MulticlassClassification/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClassificationModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassificationModel/ClassificationModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IrisDataPrediction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/IrisDataPrediction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IrisDataProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/IrisDataProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IrisModelBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClassificationModel/IrisModelBuilder.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/MLModels/Schema" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/MLModels/TestClassificationModel.zip" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/MLModels/TestClassificationModel.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/MLModels/TrainingInfo/Version.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/MLModels/TransformerChain/Model.key" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/MLModels/TransformerChain/Transform_000/Model.key" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/MLModels/TransformerChain/Transform_000/Vocabulary/Model.key" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/MLModels/TransformerChain/Transform_000/Vocabulary/Terms.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/MLModels/TransformerChain/Transform_001/Model.key" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/MLModels/TransformerChain/Transform_002/Model.key" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/MLModels/TransformerChain/Transform_002/Transform_000/Model.key" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/MLModels/TransformerChain/Transform_002/Transform_000/Model/Model.key" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/MLModels/TransformerChain/Transform_002/Transform_000/TrainSchema" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/MLModels/TransformerChain/Transform_002/Transform_001/Model.key" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/MulticlassClassification.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/MulticlassClassification.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/MulticlassClassification.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/MulticlassClassification.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.0/MulticlassClassification.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.0/MulticlassClassification.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.0/MulticlassClassification.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.0/MulticlassClassification.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.0/MulticlassClassification.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.0/MulticlassClassification.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.0/MulticlassClassification.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.0/MulticlassClassification.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.0/MulticlassClassification.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.0/MulticlassClassification.pdb" afterDir="false" />
     </list>
@@ -22,170 +40,135 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4267965">
-      <split-first>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Program.cs">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="300">
-                  <caret line="21" column="104" lean-forward="true" selection-start-line="21" selection-start-column="104" selection-end-line="21" selection-end-column="104" />
-                  <folding>
-                    <marker date="1556825413366" expanded="false" signature="6:63" ph="..." />
-                    <marker date="1556825413366" expanded="true" signature="99:950" ph="{...}" />
-                    <marker date="1556825413366" expanded="true" signature="126:948" ph="{...}" />
-                    <marker date="1556825413366" expanded="true" signature="183:942" ph="{...}" />
-                    <marker date="1556825413366" expanded="true" signature="562:665" ph="/* var data = prediction.GetData(); ... */" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Repositories/IrisDataRepository.cs">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
-                  <folding>
-                    <marker date="1556737160110" expanded="false" signature="6:113" ph="..." />
-                    <marker date="1556737160110" expanded="true" signature="162:734" ph="{...}" />
-                    <marker date="1556737160110" expanded="true" signature="205:281" ph="{...}" />
-                    <marker date="1556737160110" expanded="true" signature="344:732" ph="{...}" />
-                    <marker date="1556737160110" expanded="true" signature="473:543" ph="{...}" />
-                    <marker date="1556737160110" expanded="true" signature="614:726" ph="{...}" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/IrisDataParser.cs">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="195">
-                  <caret line="18" column="6" lean-forward="true" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
-                  <folding>
-                    <marker date="1556714419626" expanded="false" signature="6:149" ph="..." />
-                    <marker date="1556714419626" expanded="true" signature="185:1128" ph="{...}" />
-                    <marker date="1556714419626" expanded="true" signature="224:290" ph="{...}" />
-                    <marker date="1556714419626" expanded="true" signature="341:1126" ph="{...}" />
-                    <marker date="1556714419626" expanded="true" signature="535:1120" ph="{...}" />
-                    <marker date="1556714419626" expanded="true" signature="686:1079" ph="{...}" />
-                    <marker date="1556714419626" expanded="true" signature="841:1046" ph="{...}" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/ClassificationModel.cs">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="270">
-                  <caret line="29" column="51" selection-start-line="29" selection-start-column="50" selection-end-line="29" selection-end-column="51" />
-                  <folding>
-                    <marker date="1556812297883" expanded="false" signature="6:319" ph="..." />
-                    <marker date="1556812297883" expanded="true" signature="355:6488" ph="{...}" />
-                    <marker date="1556812297883" expanded="true" signature="394:6486" ph="{...}" />
-                    <marker date="1556812297883" expanded="true" signature="938:1428" ph="{...}" />
-                    <marker date="1556812297883" expanded="true" signature="1475:2338" ph="{...}" />
-                    <marker date="1556812297883" expanded="true" signature="2340:4596" ph="/* private void PredictTestValues() ... */" />
-                    <marker date="1556812297883" expanded="true" signature="4738:5698" ph="{...}" />
-                    <marker date="1556812297883" expanded="true" signature="5230:5654" ph="{...}" />
-                    <marker date="1556812297883" expanded="true" signature="5446:5583" ph="{...}" />
-                    <marker date="1556812297883" expanded="true" signature="5792:6072" ph="{...}" />
-                    <marker date="1556812297883" expanded="true" signature="5897:5996" ph="{...}" />
-                    <marker date="1556812297883" expanded="true" signature="6164:6480" ph="{...}" />
-                    <marker date="1556812297883" expanded="true" signature="6317:6434" ph="{...}" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/IrisModelBuilder.cs">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="150">
-                  <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-                  <folding>
-                    <marker date="1556801765223" expanded="false" signature="6:206" ph="..." />
-                    <marker date="1556801765223" expanded="true" signature="242:2227" ph="{...}" />
-                    <marker date="1556801765223" expanded="true" signature="279:479" ph="{...}" />
-                    <marker date="1556801765223" expanded="true" signature="529:2225" ph="{...}" />
-                    <marker date="1556801765223" expanded="true" signature="634:1527" ph="{...}" />
-                    <marker date="1556801765223" expanded="true" signature="1312:1517" ph="/* TODO: This dude is run twice. FIX IT! ... */" />
-                    <marker date="1556801765223" expanded="true" signature="1629:2214" ph="{...}" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/DataStructures/IrisPrediction.cs">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="30">
-                  <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-                  <folding>
-                    <marker date="1556812343920" expanded="true" signature="49:127" ph="{...}" />
-                    <marker date="1556812343920" expanded="true" signature="83:125" ph="{...}" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/IrisDataPrediction.cs">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="435">
-                  <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-                  <folding>
-                    <marker date="1556825413385" expanded="true" signature="6:125" ph="..." />
-                    <marker date="1556825413385" expanded="true" signature="161:961" ph="{...}" />
-                    <marker date="1556825413385" expanded="true" signature="199:959" ph="{...}" />
-                    <marker date="1556825413385" expanded="true" signature="288:371" ph="{...}" />
-                    <marker date="1556825413385" expanded="true" signature="645:753" ph="{...}" />
-                    <marker date="1556825413385" expanded="true" signature="802:953" ph="{...}" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/DataStructures/IrisData.cs">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="270">
-                  <caret line="18" column="27" lean-forward="true" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-                  <folding>
-                    <marker date="1556812310885" expanded="true" signature="75:515" ph="{...}" />
-                    <marker date="1556812310885" expanded="true" signature="104:116" ph="{...}" />
-                    <marker date="1556812310885" expanded="true" signature="151:513" ph="{...}" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/IrisDataProvider.cs">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="375">
-                  <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
-                  <folding>
-                    <marker date="1556812336812" expanded="false" signature="6:83" ph="..." />
-                    <marker date="1556812336812" expanded="true" signature="119:2053" ph="{...}" />
-                    <marker date="1556812336812" expanded="true" signature="156:488" ph="{...}" />
-                    <marker date="1556812336812" expanded="true" signature="538:2051" ph="{...}" />
-                    <marker date="1556812336812" expanded="true" signature="1038:1711" ph="{...}" />
-                    <marker date="1556812336812" expanded="true" signature="1779:2045" ph="{...}" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Program.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+              <folding>
+                <marker date="1556935468243" expanded="false" signature="6:63" ph="..." />
+                <marker date="1556935468243" expanded="true" signature="99:922" ph="{...}" />
+                <marker date="1556935468243" expanded="true" signature="126:920" ph="{...}" />
+                <marker date="1556935468243" expanded="true" signature="183:914" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Repositories/IrisDataRepository.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+              <folding>
+                <marker date="1556737160110" expanded="false" signature="6:113" ph="..." />
+                <marker date="1556737160110" expanded="true" signature="162:734" ph="{...}" />
+                <marker date="1556737160110" expanded="true" signature="205:281" ph="{...}" />
+                <marker date="1556737160110" expanded="true" signature="344:732" ph="{...}" />
+                <marker date="1556737160110" expanded="true" signature="473:543" ph="{...}" />
+                <marker date="1556737160110" expanded="true" signature="614:726" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ClassificationModel/ClassificationModel.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-105">
+              <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
+              <folding>
+                <marker date="1556935682147" expanded="false" signature="6:319" ph="..." />
+                <marker date="1556935682147" expanded="true" signature="355:6067" ph="{...}" />
+                <marker date="1556935682147" expanded="true" signature="394:6065" ph="{...}" />
+                <marker date="1556935682147" expanded="true" signature="876:1264" ph="{...}" />
+                <marker date="1556935682147" expanded="true" signature="1311:2174" ph="{...}" />
+                <marker date="1556935682147" expanded="true" signature="2176:4432" ph="/* private void PredictTestValues() ... */" />
+                <marker date="1556935682147" expanded="true" signature="4574:5641" ph="{...}" />
+                <marker date="1556935682147" expanded="true" signature="5173:5597" ph="{...}" />
+                <marker date="1556935682147" expanded="true" signature="5389:5526" ph="{...}" />
+                <marker date="1556935682147" expanded="true" signature="5743:6059" ph="{...}" />
+                <marker date="1556935682147" expanded="true" signature="5896:6013" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/IrisDataPrediction.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="50" column="12" selection-start-line="50" selection-start-column="12" selection-end-line="50" selection-end-column="12" />
+              <folding>
+                <marker date="1556935455033" expanded="false" signature="6:144" ph="..." />
+                <marker date="1556935455033" expanded="true" signature="210:2197" ph="{...}" />
+                <marker date="1556935455033" expanded="true" signature="248:2195" ph="{...}" />
+                <marker date="1556935455033" expanded="true" signature="337:420" ph="{...}" />
+                <marker date="1556935455033" expanded="true" signature="694:802" ph="{...}" />
+                <marker date="1556935455033" expanded="true" signature="851:1002" ph="{...}" />
+                <marker date="1556935455033" expanded="true" signature="1107:1686" ph="{...}" />
+                <marker date="1556935455033" expanded="true" signature="1216:1645" ph="{...}" />
+                <marker date="1556935455033" expanded="true" signature="1341:1560" ph="{...}" />
+                <marker date="1556935455033" expanded="true" signature="1406:1542" ph="{...}" />
+                <marker date="1556935455033" expanded="true" signature="1688:2189" ph="/* public IEnumerable&lt;IrisData&gt; ProbabilityToDataMapper(IEnumerable&lt;IrisData&gt; irisData, ... */" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/IrisDataParser.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+              <folding>
+                <marker date="1556714419626" expanded="false" signature="6:149" ph="..." />
+                <marker date="1556714419626" expanded="true" signature="185:1128" ph="{...}" />
+                <marker date="1556714419626" expanded="true" signature="224:290" ph="{...}" />
+                <marker date="1556714419626" expanded="true" signature="341:1126" ph="{...}" />
+                <marker date="1556714419626" expanded="true" signature="535:1120" ph="{...}" />
+                <marker date="1556714419626" expanded="true" signature="686:1079" ph="{...}" />
+                <marker date="1556714419626" expanded="true" signature="841:1046" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/IrisDataProvider.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="48" column="74" lean-forward="true" selection-start-line="48" selection-start-column="74" selection-end-line="48" selection-end-column="74" />
+              <folding>
+                <marker date="1556899012672" expanded="false" signature="6:112" ph="..." />
+                <marker date="1556899012672" expanded="true" signature="148:2614" ph="{...}" />
+                <marker date="1556899012672" expanded="true" signature="185:619" ph="{...}" />
+                <marker date="1556899012672" expanded="true" signature="669:2612" ph="{...}" />
+                <marker date="1556899012672" expanded="true" signature="1169:1825" ph="{...}" />
+                <marker date="1556899012672" expanded="true" signature="1893:2159" ph="{...}" />
+                <marker date="1556899012672" expanded="true" signature="2300:2606" ph="{...}" />
+                <marker date="1556899012672" expanded="true" signature="2372:2596" ph="/* if (!File.Exists(zipfileLocation)) ... */" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DataStructures/IrisData.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+              <folding>
+                <marker date="1556812310885" expanded="true" signature="75:515" ph="{...}" />
+                <marker date="1556812310885" expanded="true" signature="104:116" ph="{...}" />
+                <marker date="1556812310885" expanded="true" signature="151:513" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -194,23 +177,28 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4E804593-0F71-4C24-9780-929D54C74935/d5/c1f4d703/TextLoader.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C9085ED1-14B8-43D6-8D44-32FEF830F672/53/a389844e/Contracts.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4E804593-0F71-4C24-9780-929D54C74935/33/3091ef0f/MulticlassClassificationCatalog.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/IrisModelBuilder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClassificationModel/IrisModelBuilder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4E804593-0F71-4C24-9780-929D54C74935/1f/69beed56/ModelFileUtils.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C9085ED1-14B8-43D6-8D44-32FEF830F672/1d/5e18cf8f/RoleMappedSchema.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConsoleHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/IrisDataProvider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ModelPathInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Repositories/IrisDataRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClassificationModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClassificationModel/ClassificationModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/IrisDataParser.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/IrisDataPrediction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DataStructures/IrisData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/464F15D5-8976-45E0-A883-0A1115E74A46/01/1952621c/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4E804593-0F71-4C24-9780-929D54C74935/81/a327a9ce/ModelOperationsCatalog.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4E804593-0F71-4C24-9780-929D54C74935/9b/517e5ac5/OneToOneTransformerBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FFAA5FE0-844C-48B6-A4CB-8436910B8394/22/04736bc3/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DataStructures/SampleIrisData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DataStructures/IrisPrediction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/464F15D5-8976-45E0-A883-0A1115E74A46/22/4e641c6c/FileStream.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C9085ED1-14B8-43D6-8D44-32FEF830F672/71/48780c18/RoleMappedData.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C9085ED1-14B8-43D6-8D44-32FEF830F672/d9/e8aae987/RepositoryReader.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8956B743-08C6-4170-BCBB-9045DEBC4D38/09/72e3b7ff/File.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4E804593-0F71-4C24-9780-929D54C74935/c5/63121770/MulticlassClassificationEvaluator.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -227,20 +215,22 @@
         <option value="$PROJECT_DIR$/Data/FullData.txt" />
         <option value="$PROJECT_DIR$/IrisProvider.cs" />
         <option value="$PROJECT_DIR$/DataStructures/Prediction.cs" />
-        <option value="$PROJECT_DIR$/ClassificationModel.cs" />
         <option value="$PROJECT_DIR$/DataStructures/IrisData.cs" />
-        <option value="$PROJECT_DIR$/IrisDataProvider.cs" />
         <option value="$PROJECT_DIR$/DataStructures/IrisPrediction.cs" />
         <option value="$PROJECT_DIR$/IrisModelBuilder.cs" />
+        <option value="$PROJECT_DIR$/IrisDataProvider.cs" />
+        <option value="$PROJECT_DIR$/ClassificationModel.cs" />
         <option value="$PROJECT_DIR$/IrisDataPrediction.cs" />
         <option value="$PROJECT_DIR$/Program.cs" />
+        <option value="$PROJECT_DIR$/ClassificationModel/ClassificationModel.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="width" value="1734" />
-    <option name="height" value="1407" />
+    <option name="x" value="33" />
+    <option name="y" value="2" />
+    <option name="width" value="2168" />
+    <option name="height" value="1759" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -256,21 +246,6 @@
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="MulticlassClassification" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="MulticlassClassification" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Data" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="MulticlassClassification" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="DataStructures" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="MulticlassClassification" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="MLModels" type="24d0babc:SolutionExplorerModelNode" />
             </path>
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
@@ -362,11 +337,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556812469457</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Remove responsibility of getting probabilities from IrisDataPrediction to the Classifier">
+      <created>1556825715274</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1556825715274</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40772000" />
+    <option name="totallyTimeSpent" value="62328000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -378,10 +360,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="3456" height="1416" extended-state="6" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12308598" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13087249" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -397,13 +378,13 @@
       <window_info anchor="bottom" id="NuGet" order="8" />
       <window_info anchor="bottom" id="Performance Profiler" order="9" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="11" weight="0.3289166" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="11" visible="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="bottom" id="Unit Tests" order="13" />
       <window_info anchor="bottom" id="Terminal" order="14" weight="0.3289166" />
       <window_info anchor="bottom" id="Event Log" order="15" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="16" weight="0.167576" />
-      <window_info anchor="bottom" id="Debug" order="17" weight="0.20109119" />
+      <window_info anchor="bottom" id="Build" order="16" weight="0.16713881" />
+      <window_info anchor="bottom" id="Debug" order="17" weight="0.22804533" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -413,7 +394,7 @@
       <window_info anchor="right" id="Unit Tests Coverage" order="6" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12308598" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20268457" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -435,7 +416,7 @@
       <window_info anchor="bottom" id="Terminal" order="14" weight="0.3289166" />
       <window_info anchor="bottom" id="Event Log" order="15" side_tool="true" />
       <window_info anchor="bottom" id="Build" order="16" weight="0.167576" />
-      <window_info anchor="bottom" id="Debug" order="17" visible="true" weight="0.20109119" />
+      <window_info active="true" anchor="bottom" id="Debug" order="17" visible="true" weight="0.17705382" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -454,7 +435,8 @@
     <MESSAGE value="Added provider. refactored ClassificationModel more. stuff idk" />
     <MESSAGE value="change name of IProvider; removed duplicate trainer in Modelbuilder; update Program with changes" />
     <MESSAGE value="Refactor Program to call from ClassificationModel; Fixed properties in IrisData; Set Data property in IrisDataPrediction; renamed IrisPrediction" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor Program to call from ClassificationModel; Fixed properties in IrisData; Set Data property in IrisDataPrediction; renamed IrisPrediction" />
+    <MESSAGE value="Remove responsibility of getting probabilities from IrisDataPrediction to the Classifier" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove responsibility of getting probabilities from IrisDataPrediction to the Classifier" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -464,30 +446,62 @@
           <option name="timeStamp" value="1" />
         </breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ClassificationModel.cs</url>
-          <line>123</line>
-          <properties documentPath="$PROJECT_DIR$/ClassificationModel.cs" initialLine="124">
+          <url>file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4E804593-0F71-4C24-9780-929D54C74935/1f/69beed56/ModelFileUtils.cs</url>
+          <line>181</line>
+          <properties documentPath="$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4E804593-0F71-4C24-9780-929D54C74935/1f/69beed56/ModelFileUtils.cs" initialLine="181">
             <startOffsets>
-              <option value="5667" />
+              <option value="8168" />
             </startOffsets>
             <endOffsets>
-              <option value="5688" />
+              <option value="8226" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="24" />
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/IrisDataPrediction.cs</url>
+          <line>34</line>
+          <properties documentPath="$PROJECT_DIR$/IrisDataPrediction.cs" initialLine="33">
+            <startOffsets>
+              <option value="1130" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1166" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/IrisDataPrediction.cs</url>
+          <line>50</line>
+          <properties documentPath="$PROJECT_DIR$/IrisDataPrediction.cs" initialLine="50">
+            <startOffsets>
+              <option value="1658" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1676" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Program.cs</url>
+          <line>22</line>
+          <properties documentPath="$PROJECT_DIR$/Program.cs" initialLine="22">
+            <startOffsets>
+              <option value="913" />
+            </startOffsets>
+            <endOffsets>
+              <option value="914" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Predictions.cs" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4E804593-0F71-4C24-9780-929D54C74935/81/a327a9ce/ModelOperationsCatalog.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="111" column="6" selection-start-line="111" selection-start-column="6" selection-end-line="111" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4E804593-0F71-4C24-9780-929D54C74935/d5/c1f4d703/TextLoader.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="246">
@@ -526,13 +540,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Data/FullData.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="15" selection-start-line="1" selection-start-column="3" selection-end-line="5" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Data/TrainData.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -552,13 +559,6 @@
             <marker date="1556745796439" expanded="true" signature="442:579" ph="{...}" />
             <marker date="1556745796439" expanded="true" signature="655:792" ph="{...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/TestData.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="19" lean-forward="true" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -691,10 +691,78 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C9085ED1-14B8-43D6-8D44-32FEF830F672/53/a389844e/Contracts.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="758" column="6" selection-start-line="758" selection-start-column="6" selection-end-line="758" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4E804593-0F71-4C24-9780-929D54C74935/81/a327a9ce/ModelOperationsCatalog.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="135" column="24" selection-start-line="135" selection-start-column="24" selection-end-line="135" selection-end-column="24" />
+          <folding>
+            <marker date="1556560416246" expanded="true" signature="0:351" ph="/* Decompiled with JetBrains decompiler ... */" />
+            <marker date="1556560416246" expanded="false" signature="359:490" ph="..." />
+            <marker date="1556560416246" expanded="true" signature="514:14546" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="519:619" ph="/// An object serving as a 'catalog' of available model operations. ... " />
+            <marker date="1556560416246" expanded="true" signature="683:14544" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="835:899" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="851:893" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="958:993" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="999:1739" ph="/// Save a transformer model and the loader used to create its input data to the stream. ... " />
+            <marker date="1556560416246" expanded="true" signature="1833:2746" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="2148:2175" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="2581:2740" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="2752:3485" ph="/// Save a transformer model and the loader used to create its input data to the file. ... " />
+            <marker date="1556560416246" expanded="true" signature="3581:3852" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="3858:4583" ph="/// Save a transformer model and the schema of the data that was used to train it to the stream. ... " />
+            <marker date="1556560416246" expanded="true" signature="4667:5012" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="4838:5006" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="5018:5736" ph="/// Save a transformer model and the schema of the data that was used to train it to the file. ... " />
+            <marker date="1556560416246" expanded="true" signature="5822:6014" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="6098:6571" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="6212:6565" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="6378:6413" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="6577:7011" ph="///Load the model and its input schema from a stream. ... " />
+            <marker date="1556560416246" expanded="true" signature="7087:8867" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="7258:8861" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="7357:7715" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="7932:8667" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="8105:8206" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="8220:8524" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="8555:8657" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="8680:8853" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="8873:9317" ph="///Load the model and its input schema from a file. ... " />
+            <marker date="1556560416246" expanded="true" signature="9395:9593" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="9599:9882" ph="/// Given a loader, test try to &quot;decompose&quot; it into a source loader, and its transform if any. ... " />
+            <marker date="1556560416246" expanded="true" signature="9967:10558" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="10564:11188" ph="/// Load a transformer model and a data loader model from a stream. ... " />
+            <marker date="1556560416246" expanded="true" signature="11303:11968" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="11469:11962" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="11489:11694" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="11723:11954" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="11974:12606" ph="/// Load a transformer model and a data loader model from a file. ... " />
+            <marker date="1556560416246" expanded="true" signature="12723:12930" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="12936:13682" ph="///Create a prediction engine for one-time prediction. ... " />
+            <marker date="1556560416246" expanded="true" signature="13994:14147" ph="{...}" />
+            <marker date="1556560416246" expanded="true" signature="14347:14540" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8956B743-08C6-4170-BCBB-9045DEBC4D38/09/72e3b7ff/File.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="108" column="10" selection-start-line="108" selection-start-column="10" selection-end-line="108" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/464F15D5-8976-45E0-A883-0A1115E74A46/22/4e641c6c/FileStream.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="634" column="7" lean-forward="true" selection-start-line="634" selection-start-column="7" selection-end-line="634" selection-end-column="7" />
+        <state relative-caret-position="333">
+          <caret line="621" column="10" selection-start-line="621" selection-start-column="10" selection-end-line="621" selection-end-column="10" />
           <folding>
             <marker date="1556560340691" expanded="true" signature="0:326" ph="/* Decompiled with JetBrains decompiler ... */" />
             <marker date="1556560340691" expanded="false" signature="334:541" ph="..." />
@@ -917,22 +985,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C9085ED1-14B8-43D6-8D44-32FEF830F672/53/a389844e/Contracts.cs">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FFAA5FE0-844C-48B6-A4CB-8436910B8394/22/04736bc3/Enumerable.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="758" column="6" selection-start-line="758" selection-start-column="6" selection-end-line="758" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataStructures/IrisData.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="27" lean-forward="true" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-          <folding>
-            <marker date="1556812310885" expanded="true" signature="75:515" ph="{...}" />
-            <marker date="1556812310885" expanded="true" signature="104:116" ph="{...}" />
-            <marker date="1556812310885" expanded="true" signature="151:513" ph="{...}" />
-          </folding>
+        <state relative-caret-position="513">
+          <caret line="5268" column="6" selection-start-line="5268" selection-start-column="6" selection-end-line="5268" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -947,10 +1003,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/IrisModelBuilder.cs">
+    <entry file="file://$PROJECT_DIR$/ClassificationModel/IrisModelBuilder.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
-          <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
           <folding>
             <marker date="1556801765223" expanded="false" signature="6:206" ph="..." />
             <marker date="1556801765223" expanded="true" signature="242:2227" ph="{...}" />
@@ -963,47 +1019,115 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ClassificationModel.cs">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C9085ED1-14B8-43D6-8D44-32FEF830F672/d9/e8aae987/RepositoryReader.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="29" column="51" selection-start-line="29" selection-start-column="50" selection-end-line="29" selection-end-column="51" />
+        <state relative-caret-position="483">
+          <caret line="49" column="5" lean-forward="true" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4E804593-0F71-4C24-9780-929D54C74935/1f/69beed56/ModelFileUtils.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="543">
+          <caret line="181" column="8" selection-start-line="181" selection-start-column="8" selection-end-line="181" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/464F15D5-8976-45E0-A883-0A1115E74A46/01/1952621c/ThrowHelper.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="88" column="6" selection-start-line="88" selection-start-column="6" selection-end-line="88" selection-end-column="6" />
           <folding>
-            <marker date="1556812297883" expanded="false" signature="6:319" ph="..." />
-            <marker date="1556812297883" expanded="true" signature="355:6488" ph="{...}" />
-            <marker date="1556812297883" expanded="true" signature="394:6486" ph="{...}" />
-            <marker date="1556812297883" expanded="true" signature="938:1428" ph="{...}" />
-            <marker date="1556812297883" expanded="true" signature="1475:2338" ph="{...}" />
-            <marker date="1556812297883" expanded="true" signature="2340:4596" ph="/* private void PredictTestValues() ... */" />
-            <marker date="1556812297883" expanded="true" signature="4738:5698" ph="{...}" />
-            <marker date="1556812297883" expanded="true" signature="5230:5654" ph="{...}" />
-            <marker date="1556812297883" expanded="true" signature="5446:5583" ph="{...}" />
-            <marker date="1556812297883" expanded="true" signature="5792:6072" ph="{...}" />
-            <marker date="1556812297883" expanded="true" signature="5897:5996" ph="{...}" />
-            <marker date="1556812297883" expanded="true" signature="6164:6480" ph="{...}" />
-            <marker date="1556812297883" expanded="true" signature="6317:6434" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="0:324" ph="/* Decompiled with JetBrains decompiler ... */" />
+            <marker date="1556918496411" expanded="false" signature="332:457" ph="..." />
+            <marker date="1556918496411" expanded="true" signature="475:11190" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="513:11188" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="576:634" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="718:846" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="904:960" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="1021:1080" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="1151:1231" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="1298:1435" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="1515:1660" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="1751:1897" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="1984:2126" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="2208:2345" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="2435:2522" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="2616:2707" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="2807:2907" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="2990:3075" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="3129:3181" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="3258:3326" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="3444:3522" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="3624:3715" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="3796:3868" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="3949:4041" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="4163:4294" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="4381:4477" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="4605:4693" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="4844:4945" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="5030:5106" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="5204:5303" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="5385:5478" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="5555:5643" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="5716:5800" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="5881:5973" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="6060:6158" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="6260:6366" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="6449:6558" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="6613:6666" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="6744:6829" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="6906:7009" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="7100:7217" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="7303:7415" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="7509:7629" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="7722:7841" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="7970:8074" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="8204:8772" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="8866:8955" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="9066:9163" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="9276:9393" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="9510:9631" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="9780:9918" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="10046:10174" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="10345:10520" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="10692:10832" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="10950:10996" ph="{...}" />
+            <marker date="1556918496411" expanded="true" signature="11116:11184" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/IrisDataProvider.cs">
+    <entry file="file://$PROJECT_DIR$/DataStructures/IrisData.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+        <state relative-caret-position="150">
+          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
           <folding>
-            <marker date="1556812336812" expanded="false" signature="6:83" ph="..." />
-            <marker date="1556812336812" expanded="true" signature="119:2053" ph="{...}" />
-            <marker date="1556812336812" expanded="true" signature="156:488" ph="{...}" />
-            <marker date="1556812336812" expanded="true" signature="538:2051" ph="{...}" />
-            <marker date="1556812336812" expanded="true" signature="1038:1711" ph="{...}" />
-            <marker date="1556812336812" expanded="true" signature="1779:2045" ph="{...}" />
+            <marker date="1556812310885" expanded="true" signature="75:515" ph="{...}" />
+            <marker date="1556812310885" expanded="true" signature="104:116" ph="{...}" />
+            <marker date="1556812310885" expanded="true" signature="151:513" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/FullData.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="15" selection-start-line="1" selection-start-column="3" selection-end-line="5" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/TestData.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="19" lean-forward="true" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/IrisDataParser.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="18" column="6" lean-forward="true" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+        <state relative-caret-position="105">
+          <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
           <folding>
             <marker date="1556714419626" expanded="false" signature="6:149" ph="..." />
             <marker date="1556714419626" expanded="true" signature="185:1128" ph="{...}" />
@@ -1018,8 +1142,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Repositories/IrisDataRepository.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
+        <state relative-caret-position="225">
+          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
           <folding>
             <marker date="1556737160110" expanded="false" signature="6:113" ph="..." />
             <marker date="1556737160110" expanded="true" signature="162:734" ph="{...}" />
@@ -1031,31 +1155,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ClassificationModel/ClassificationModel.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-105">
+          <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
+          <folding>
+            <marker date="1556935682147" expanded="false" signature="6:319" ph="..." />
+            <marker date="1556935682147" expanded="true" signature="355:6067" ph="{...}" />
+            <marker date="1556935682147" expanded="true" signature="394:6065" ph="{...}" />
+            <marker date="1556935682147" expanded="true" signature="876:1264" ph="{...}" />
+            <marker date="1556935682147" expanded="true" signature="1311:2174" ph="{...}" />
+            <marker date="1556935682147" expanded="true" signature="2176:4432" ph="/* private void PredictTestValues() ... */" />
+            <marker date="1556935682147" expanded="true" signature="4574:5641" ph="{...}" />
+            <marker date="1556935682147" expanded="true" signature="5173:5597" ph="{...}" />
+            <marker date="1556935682147" expanded="true" signature="5389:5526" ph="{...}" />
+            <marker date="1556935682147" expanded="true" signature="5743:6059" ph="{...}" />
+            <marker date="1556935682147" expanded="true" signature="5896:6013" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IrisDataProvider.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="48" column="74" lean-forward="true" selection-start-line="48" selection-start-column="74" selection-end-line="48" selection-end-column="74" />
+          <folding>
+            <marker date="1556899012672" expanded="false" signature="6:112" ph="..." />
+            <marker date="1556899012672" expanded="true" signature="148:2614" ph="{...}" />
+            <marker date="1556899012672" expanded="true" signature="185:619" ph="{...}" />
+            <marker date="1556899012672" expanded="true" signature="669:2612" ph="{...}" />
+            <marker date="1556899012672" expanded="true" signature="1169:1825" ph="{...}" />
+            <marker date="1556899012672" expanded="true" signature="1893:2159" ph="{...}" />
+            <marker date="1556899012672" expanded="true" signature="2300:2606" ph="{...}" />
+            <marker date="1556899012672" expanded="true" signature="2372:2596" ph="/* if (!File.Exists(zipfileLocation)) ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/IrisDataPrediction.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+        <state relative-caret-position="323">
+          <caret line="50" column="12" selection-start-line="50" selection-start-column="12" selection-end-line="50" selection-end-column="12" />
           <folding>
-            <marker date="1556825413385" expanded="true" signature="6:125" ph="..." />
-            <marker date="1556825413385" expanded="true" signature="161:961" ph="{...}" />
-            <marker date="1556825413385" expanded="true" signature="199:959" ph="{...}" />
-            <marker date="1556825413385" expanded="true" signature="288:371" ph="{...}" />
-            <marker date="1556825413385" expanded="true" signature="645:753" ph="{...}" />
-            <marker date="1556825413385" expanded="true" signature="802:953" ph="{...}" />
+            <marker date="1556935455033" expanded="false" signature="6:144" ph="..." />
+            <marker date="1556935455033" expanded="true" signature="210:2197" ph="{...}" />
+            <marker date="1556935455033" expanded="true" signature="248:2195" ph="{...}" />
+            <marker date="1556935455033" expanded="true" signature="337:420" ph="{...}" />
+            <marker date="1556935455033" expanded="true" signature="694:802" ph="{...}" />
+            <marker date="1556935455033" expanded="true" signature="851:1002" ph="{...}" />
+            <marker date="1556935455033" expanded="true" signature="1107:1686" ph="{...}" />
+            <marker date="1556935455033" expanded="true" signature="1216:1645" ph="{...}" />
+            <marker date="1556935455033" expanded="true" signature="1341:1560" ph="{...}" />
+            <marker date="1556935455033" expanded="true" signature="1406:1542" ph="{...}" />
+            <marker date="1556935455033" expanded="true" signature="1688:2189" ph="/* public IEnumerable&lt;IrisData&gt; ProbabilityToDataMapper(IEnumerable&lt;IrisData&gt; irisData, ... */" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Program.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="21" column="104" lean-forward="true" selection-start-line="21" selection-start-column="104" selection-end-line="21" selection-end-column="104" />
+        <state relative-caret-position="315">
+          <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
           <folding>
-            <marker date="1556825413366" expanded="false" signature="6:63" ph="..." />
-            <marker date="1556825413366" expanded="true" signature="99:950" ph="{...}" />
-            <marker date="1556825413366" expanded="true" signature="126:948" ph="{...}" />
-            <marker date="1556825413366" expanded="true" signature="183:942" ph="{...}" />
-            <marker date="1556825413366" expanded="true" signature="562:665" ph="/* var data = prediction.GetData(); ... */" />
+            <marker date="1556935468243" expanded="false" signature="6:63" ph="..." />
+            <marker date="1556935468243" expanded="true" signature="99:922" ph="{...}" />
+            <marker date="1556935468243" expanded="true" signature="126:920" ph="{...}" />
+            <marker date="1556935468243" expanded="true" signature="183:914" ph="{...}" />
           </folding>
         </state>
       </provider>
