@@ -18,6 +18,7 @@
         <e p="IrisPrediction.cs" t="Include" />
         <e p="SampleIrisData.cs" t="Include" />
       </e>
+      <e p="Iris.cs" t="Include" />
       <e p="IRIS.csv" t="Include" />
       <e p="IrisDataParser.cs" t="Include" />
       <e p="IrisDataPrediction.cs" t="Include" />
