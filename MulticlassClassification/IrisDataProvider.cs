@@ -1,6 +1,7 @@
 using System.IO;
 using System.IO.Compression;
 using Microsoft.ML;
+using MulticlassClassification.ClassificationModel;
 using MulticlassClassification.DataStructures;
 
 namespace MulticlassClassification

@@ -7,7 +7,7 @@ using System.Text;
 using Microsoft.ML.Transforms;
 using MulticlassClassification.DataStructures;
 
-namespace MulticlassClassification
+namespace MulticlassClassification.ClassificationModel
 {
     public interface IModelBuilder
     {
