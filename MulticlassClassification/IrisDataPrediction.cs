@@ -24,13 +24,13 @@ namespace MulticlassClassification
             Data = GetData();
         }
 
-        private IEnumerable<IrisData> GetData()
+        public IEnumerable<IrisData> GetData()
         {
             var dataParser = new IrisDataParser();
             return irisDataRepository.GetIrisData(dataParser.RelativeFilePath);
         }
 
-        public IEnumerable<string> MaxProbability(IEnumerable<Dictionary<string, float>> probabilities)
+        public IEnumerable<string> PredictCategory(IEnumerable<Dictionary<string, float>> probabilities)
         {
             var prediction = new List<string>();
             foreach (var sample in probabilities)
@@ -49,6 +49,19 @@ namespace MulticlassClassification
                 prediction.Add(label);
             }
             return prediction;
+        }
+
+        public IEnumerable<Iris> PredictedData(IEnumerable<IrisData> inputData, IEnumerable<string> predictedCategories)
+        {
+            var irises = inputData.Zip(predictedCategories, (data, categories) => new Iris()
+            {
+                Label = categories,
+                SepalLength = data.SepalLength,
+                SepalWidth = data.SepalWidth,
+                PetalLength = data.PetalLength,
+                PetalWidth = data.PetalWidth
+            });
+            return irises;
         }
 
 //        public IEnumerable<IrisData> ProbabilityToDataMapper(IEnumerable<IrisData> irisData,

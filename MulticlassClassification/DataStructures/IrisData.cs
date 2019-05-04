@@ -2,10 +2,7 @@
 
 namespace MulticlassClassification.DataStructures
 {
-    public interface IData
-    {
-    }
-     public class IrisData : IData
+     public class IrisData
         {
             [LoadColumn(0)]
             public float Label;

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using MulticlassClassification.Repositories;
 
 namespace MulticlassClassification
@@ -18,8 +19,8 @@ namespace MulticlassClassification
 
             classifier.FitAndSaveModel();
             prediction.Probabilities = classifier.PredictValues(prediction.Data, prediction.Categories);
-            var predictedCategories = prediction.MaxProbability(prediction.Probabilities);
-         
+            var predictedCategories = prediction.PredictCategory(prediction.Probabilities);
+            var predictedIrises = prediction.PredictedData(prediction.Data, predictedCategories);
         }
     }
 }
