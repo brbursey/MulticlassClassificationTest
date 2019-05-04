@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using MulticlassClassification.Repositories;
+﻿using MulticlassClassification.Repositories;
 
 namespace MulticlassClassification
 {
@@ -14,7 +12,7 @@ namespace MulticlassClassification
 
             provider.CreateDirectoryAndExtractZipfile(provider.BaseModelPath, provider.ModelZipFilePath);
             
-            var classifier = new ClassificationModel(provider);
+            var classifier = new ClassificationModel.ClassificationModel(provider);
             var prediction = new IrisDataPrediction(dataRepository);
 
             classifier.FitAndSaveModel();

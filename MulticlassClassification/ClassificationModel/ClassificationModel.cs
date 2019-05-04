@@ -11,7 +11,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace MulticlassClassification
+namespace MulticlassClassification.ClassificationModel
 {
     public class ClassificationModel
     {
