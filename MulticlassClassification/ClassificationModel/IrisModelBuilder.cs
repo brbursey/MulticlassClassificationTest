@@ -31,11 +31,6 @@ namespace MulticlassClassification.ClassificationModel
                     );
             var dataPipeline = outputDataSetup.Append(inputDataSetup).AppendCacheCheckpoint(context);
             return dataPipeline;
-
-            //TODO: This dude is run twice. FIX IT!
-//            var trainer = CreateTrainerForModel(context);
-//            var trainingPipeline = dataPipeline.Append(trainer);
-//            return trainingPipeline;
         }
 
         public EstimatorChain<KeyToValueMappingTransformer> CreateTrainerForModel(MLContext context)

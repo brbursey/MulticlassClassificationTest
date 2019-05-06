@@ -58,6 +58,44 @@ namespace MulticlassClassification.ClassificationModel
             Console.WriteLine("The model is saved to {0}", provider.ModelPath);
         }
 
+        public IEnumerable<Dictionary<string, float>> PredictValues(IEnumerable<IrisData> dataToPredict, IEnumerable<string> dataCategories)
+        {
+            var trainedMulticlassModel = Context.Model.Load(provider.ModelPath, out var modelInputSchema);
+            var categories = OutputCategories(dataCategories);
+
+            var predEngine = Context.Model.CreatePredictionEngine<IrisData, IrisPrediction>(trainedMulticlassModel);
+            VBuffer<float> keys = default;
+            predEngine.OutputSchema["PredictedLabel"].GetKeyValues(ref keys);
+            var labelsArray = keys.DenseValues().ToArray();
+
+            var probabilities = new List<Dictionary<string, float>>();
+            foreach (var data in dataToPredict)
+            {
+                var resultPrediction = predEngine.Predict(data);
+                var probabilitiesByLabel = new Dictionary<string, float>();
+                for (var i = 0; i < labelsArray.Length; i++)
+                {
+                    probabilitiesByLabel.Add(categories[labelsArray[i]], resultPrediction.Score[i]);
+                }
+                probabilities.Add(probabilitiesByLabel);
+            }
+            return probabilities;
+        }
+
+        
+
+        private Dictionary<float, string> OutputCategories(IEnumerable<string> categories)
+        {
+            var indexToCategory = new Dictionary<float, string>();
+            var index = 0;
+            foreach (var category in categories)
+            {
+                indexToCategory.Add(index, category);
+                index = index + 1;
+            }
+            return indexToCategory;
+        }
+        
 //        private void PredictTestValues()
 //        {
 //            var categories = new List<string>()
@@ -98,43 +136,5 @@ namespace MulticlassClassification.ClassificationModel
 //                              $"{IrisFlowers[labelsArray[1]]}: {resultPrediction3.Score[1]:0.####}\n" +
 //                              $"{IrisFlowers[labelsArray[2]]}: {resultPrediction3.Score[2]:0.####}\n");
 //        }
-
-        public IEnumerable<Dictionary<string, float>> PredictValues(IEnumerable<IrisData> dataToPredict, IEnumerable<string> dataCategories)
-        {
-            var trainedMulticlassModel = Context.Model.Load(provider.ModelPath, out var modelInputSchema);
-            var categories = OutputCategories(dataCategories);
-
-            var predEngine = Context.Model.CreatePredictionEngine<IrisData, IrisPrediction>(trainedMulticlassModel);
-            VBuffer<float> keys = default;
-            predEngine.OutputSchema["PredictedLabel"].GetKeyValues(ref keys);
-            var labelsArray = keys.DenseValues().ToArray();
-
-            var probabilities = new List<Dictionary<string, float>>();
-            foreach (var data in dataToPredict)
-            {
-                var resultPrediction = predEngine.Predict(data);
-                var probabilitiesByLabel = new Dictionary<string, float>();
-                for (var i = 0; i < labelsArray.Length; i++)
-                {
-                    probabilitiesByLabel.Add(categories[labelsArray[i]], resultPrediction.Score[i]);
-                }
-                probabilities.Add(probabilitiesByLabel);
-            }
-            return probabilities;
-        }
-
-        
-
-        private Dictionary<float, string> OutputCategories(IEnumerable<string> categories)
-        {
-            var indexToCategory = new Dictionary<float, string>();
-            var index = 0;
-            foreach (var category in categories)
-            {
-                indexToCategory.Add(index, category);
-                index = index + 1;
-            }
-            return indexToCategory;
-        }
     }
 }
