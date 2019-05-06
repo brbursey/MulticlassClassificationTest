@@ -1,4 +1,5 @@
-﻿using MulticlassClassification.Repositories;
+﻿using System;
+using MulticlassClassification.Repositories;
 
 namespace MulticlassClassification
 {
@@ -19,6 +20,16 @@ namespace MulticlassClassification
             prediction.Probabilities = classifier.PredictValues(prediction.Data, prediction.Categories);
             var predictedCategories = prediction.PredictCategory(prediction.Probabilities);
             var predictedIrises = prediction.PredictedData(prediction.Data, predictedCategories);
+
+            foreach (var iris in predictedIrises)
+            {
+                Console.WriteLine($"Sepal Length: {iris.SepalLength}\n" +
+                                  $"Sepal Width: {iris.SepalWidth}\n" +
+                                  $"Petal Length: {iris.PetalLength}\n" +
+                                  $"Petal Width: {iris.PetalWidth}\n" +
+                                  $"Predicted type: {iris.Label}\n" +
+                                  $"------------------------------");
+            }
         }
     }
 }

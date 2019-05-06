@@ -82,8 +82,6 @@ namespace MulticlassClassification.ClassificationModel
             return probabilities;
         }
 
-        
-
         private Dictionary<float, string> OutputCategories(IEnumerable<string> categories)
         {
             var indexToCategory = new Dictionary<float, string>();

@@ -24,7 +24,6 @@
       <e p="IrisDataPrediction.cs" t="Include" />
       <e p="IrisDataProvider.cs" t="Include" />
       <e p="MLModels" t="Include" />
-      <e p="ModelPathInfo.cs" t="Include" />
       <e p="MulticlassClassification.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive">
         <e p="Debug" t="Include">
