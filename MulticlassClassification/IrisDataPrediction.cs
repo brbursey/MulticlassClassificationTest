@@ -24,12 +24,6 @@ namespace MulticlassClassification
             Data = GetData();
         }
 
-        public IEnumerable<IrisData> GetData()
-        {
-            var dataParser = new IrisDataParser();
-            return irisDataRepository.GetIrisData(dataParser.RelativeFilePath);
-        }
-
         public IEnumerable<string> PredictCategory(IEnumerable<Dictionary<string, float>> probabilities)
         {
             var prediction = new List<string>();
@@ -53,9 +47,9 @@ namespace MulticlassClassification
 
         public IEnumerable<Iris> PredictedData(IEnumerable<IrisData> inputData, IEnumerable<string> predictedCategories)
         {
-            var irises = inputData.Zip(predictedCategories, (data, categories) => new Iris()
+            var irises = inputData.Zip(predictedCategories, (data, category) => new Iris()
             {
-                Label = categories,
+                Label = category,
                 SepalLength = data.SepalLength,
                 SepalWidth = data.SepalWidth,
                 PetalLength = data.PetalLength,
@@ -64,18 +58,11 @@ namespace MulticlassClassification
             return irises;
         }
 
-//        public IEnumerable<IrisData> ProbabilityToDataMapper(IEnumerable<IrisData> irisData,
-//            IEnumerable<string> predictedCategories)
-//        {
-//            var data = irisData.ToList();
-//            var prob = predictedCategories.ToList();
-//            //var dataToProb = new Dictionary<IrisData, float>();
-//            for (int i = 0; i < irisData.Count(); i++)
-//            {
-//                //data[i].Label = prob[i];
-//            }
-//            return data;
-//        }
+        private IEnumerable<IrisData> GetData()
+        {
+            var dataParser = new IrisDataParser();
+            return irisDataRepository.GetIrisData(dataParser.RelativeFilePath);
+        }
     }
 }
                                 

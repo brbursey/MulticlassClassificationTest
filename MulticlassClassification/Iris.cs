@@ -11,6 +11,5 @@ namespace MulticlassClassification
         public float SepalWidth;
         public float PetalLength;
         public float PetalWidth;
-        //public IEnumerable<Dictionary<string, float>> LabelProbabilities;
     }
 }
