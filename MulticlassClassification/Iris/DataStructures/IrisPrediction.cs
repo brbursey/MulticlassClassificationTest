@@ -1,4 +1,4 @@
-namespace MulticlassClassification.DataStructures
+namespace MulticlassClassification.Iris.DataStructures
 {
     public class IrisPrediction
     {

@@ -1,11 +1,9 @@
-﻿using MulticlassClassification.DataStructures;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
+using MulticlassClassification.Iris.DataStructures;
 
-namespace MulticlassClassification
+namespace MulticlassClassification.Iris
 {
     public interface IIrisDataParser
     {

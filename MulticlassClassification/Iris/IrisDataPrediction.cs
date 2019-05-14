@@ -1,10 +1,9 @@
-﻿using MulticlassClassification.DataStructures;
-using MulticlassClassification.Repositories;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Emit;
+using MulticlassClassification.Iris.DataStructures;
+using MulticlassClassification.Iris.Repositories;
 
-namespace MulticlassClassification
+namespace MulticlassClassification.Iris
 {
     public class IrisDataPrediction
     {

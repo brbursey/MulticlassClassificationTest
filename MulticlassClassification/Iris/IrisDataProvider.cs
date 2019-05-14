@@ -1,10 +1,9 @@
 using System.IO;
-using System.IO.Compression;
 using Microsoft.ML;
 using MulticlassClassification.ClassificationModel;
-using MulticlassClassification.DataStructures;
+using MulticlassClassification.Iris.DataStructures;
 
-namespace MulticlassClassification
+namespace MulticlassClassification.Iris
 {
     public interface IDataProvider
     {

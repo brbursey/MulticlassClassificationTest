@@ -1,8 +1,4 @@
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using MulticlassClassification.Repositories;
-
-namespace MulticlassClassification
+namespace MulticlassClassification.Iris
 {
     public class Iris
     {

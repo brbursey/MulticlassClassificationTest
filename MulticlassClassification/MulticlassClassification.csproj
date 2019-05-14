@@ -9,6 +9,9 @@
     <Content Include="Data\**\*">
 	 <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Iris\Data\FullData.txt" />
+    <Content Include="Iris\Data\TestData.txt" />
+    <Content Include="Iris\Data\TrainData.txt" />
 	<Content Include="MLModels\**\*">
 	 <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

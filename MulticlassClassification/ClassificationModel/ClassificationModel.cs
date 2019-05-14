@@ -1,15 +1,12 @@
 ﻿using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.ML.Transforms;
-using MulticlassClassification.DataStructures;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.IO.Compression;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
+using MulticlassClassification.Iris;
+using MulticlassClassification.Iris.DataStructures;
 
 namespace MulticlassClassification.ClassificationModel
 {
@@ -34,7 +31,6 @@ namespace MulticlassClassification.ClassificationModel
             ModelBuilder = provider.ModelBuilder;
             Trainer = ModelBuilder.CreateTrainerForModel(Context);
             Pipeline = ModelBuilder.DataPipelineSetup(Context);
-
         }
         
         public void FitAndSaveModel()

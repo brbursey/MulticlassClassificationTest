@@ -1,13 +1,9 @@
 ﻿using Microsoft.ML;
 using Microsoft.ML.Data;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 using Microsoft.ML.Transforms;
-using MulticlassClassification.DataStructures;
+using MulticlassClassification.Iris.DataStructures;
 
-namespace MulticlassClassification.ClassificationModel
+namespace MulticlassClassification.Iris
 {
     public interface IModelBuilder
     {

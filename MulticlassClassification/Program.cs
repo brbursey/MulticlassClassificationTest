@@ -1,5 +1,6 @@
 ﻿using System;
-using MulticlassClassification.Repositories;
+using MulticlassClassification.Iris;
+using MulticlassClassification.Iris.Repositories;
 
 namespace MulticlassClassification
 {

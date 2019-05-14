@@ -1,9 +1,7 @@
-﻿using MulticlassClassification.DataStructures;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using MulticlassClassification.Iris.DataStructures;
 
-namespace MulticlassClassification.Repositories
+namespace MulticlassClassification.Iris.Repositories
 {
     public interface IIrisDataRepository
     {

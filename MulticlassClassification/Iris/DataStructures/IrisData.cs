@@ -1,6 +1,6 @@
 ﻿using Microsoft.ML.Data;
 
-namespace MulticlassClassification.DataStructures
+namespace MulticlassClassification.Iris.DataStructures
 {
      public class IrisData
         {
